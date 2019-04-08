@@ -1,3 +1,4 @@
+/* eslint-disable fp/no-mutation */
 const webpack = require('webpack')
 const path = require('path')
 const pkg = require('./package.json')
