@@ -29,7 +29,6 @@ package-lock.json
 
 # Remove some common IDE working directories
 .idea
-.vscode
 
 .DS_Store
 
