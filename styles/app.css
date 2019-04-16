@@ -15,13 +15,57 @@ h1 { font-size: 1.4rem; }
 h2 { font-size: 1.2rem; }
 h3 { font-size: 1.1rem; margin:0 }
 
+.autocomplete.cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 .card p {margin: 0}
 
 .card {
     display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    min-height: 15rem;
+    height: 20rem;
+    min-width: 10rem;
+    width: 15rem;
+    margin: 10px;
+    background-color: beige;
+    border-radius: 15px;
+    box-shadow: 5px 5px grey;
+}
+
+.card.basics {
+    display: flex;
     flex-direction: column;
     justify-content: flex-end;
     min-height: 10rem;
+    width: 75%;
+    background-color: white;
+}
+
+.cards.stats {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    padding-top: 10px;
+    width: 30%;
+    background-color: black;
+    color: white;
+}
+
+.int, .str, .spd, .dur, .pow, .cbt {
+    border: 1px solid black;
+    border-radius: 50px;
+    background-color: grey;
+    padding: 25% 25%;
+    margin-bottom:10px;
+    text-align: center;
+    width: 100%;
+    
 }
 
 .card .image {

@@ -24,7 +24,7 @@ export default (state, actions) =>
     </div>
     <nav>
       <input oninput={ev => actions.search(ev.target.value)} id='searchField' type='text' placeholder='Luke Skywalker'/>
-      <button onclick={ev => actions.search(document.getElementById('searchField').value)}>Search</button>
+      <button onclick={() => actions.search(document.getElementById('searchField').value)}>Search</button>
     </nav>
     <div className='autocomplete cards'>
       { state.autocomplete.map(hero => card({
