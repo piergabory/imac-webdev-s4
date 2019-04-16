@@ -1,0 +1,14 @@
+//vscode yes
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/package-lock.json": true
+		},
+		"editor.tabSize": 2
+	}
+}
