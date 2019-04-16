@@ -5,3 +5,7 @@
 body {
     font-family: sans-serif;
 }
+
+.card .image {
+    height: 200px;
+}

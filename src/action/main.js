@@ -11,5 +11,12 @@ export default {
 
   setHero: hero => state => ({...state, hero}),
 
-  fillAutocompleteTable: heroes => state => ({...state, autocomplete: heroes})
+  fillAutocompleteTable: heroes => state => ({...state, autocomplete: heroes}),
+
+  cards: {
+    addToDeck: hero => state => {
+      console.log(hero, state)
+      return ({...state, deck: state.deck.concat([hero])})
+    }
+  }
 }

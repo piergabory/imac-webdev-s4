@@ -1,3 +1,7 @@
 export default {
-  autocomplete: []
+  autocomplete: [],
+  cards: {
+    deck: [],
+    selected: null
+  }
 }
