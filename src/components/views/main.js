@@ -10,6 +10,11 @@ import { h } from 'hyperapp'
 import card from '../card'
 
 export default (state, actions) =>
-  <main onclick={ () => actions.getHero(70) }>
-    {state.hero ? card(state.hero) : 'Hello world!'}
+  <main>
+    <h1>Hyperbrawl battle royale</h1>
+    <input oninput={ev => actions.search(ev.target.value)} type='text'/>
+    <div className='autocomplete'>
+      {console.log(state)}
+      { state.autocomplete.map(hero => card(hero))}
+    </div>
   </main>

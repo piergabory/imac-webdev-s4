@@ -2,10 +2,14 @@ import api from '../api/apiGateway'
 
 export default {
   getHero: id => (_, actions) => {
-    return api.getHero(id).then(hero => actions.setHero(hero))
+    api.getHero(id).then(hero => actions.setHero(hero))
   },
 
-  setHero: hero => state => {
-    return ({...state, hero})
-  }
+  search: searchedExpression => (_, actions) => {
+    api.searchHero(searchedExpression).then(response => actions.fillAutocompleteTable(response.results))
+  },
+
+  setHero: hero => state => ({...state, hero}),
+
+  fillAutocompleteTable: heroes => state => ({...state, autocomplete: heroes})
 }
