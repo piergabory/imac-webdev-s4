@@ -2,6 +2,6 @@ export default {
   autocomplete: [],
   cards: {
     deck: [],
-    selected: null
+    deckMaxSize: 10
   }
 }

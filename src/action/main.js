@@ -1,21 +1,29 @@
 import api from '../api/apiGateway'
 
 export default {
-  getHero: id => (_, actions) => {
-    api.getHero(id).then(hero => actions.setHero(hero))
-  },
-
   search: searchedExpression => (_, actions) => {
     api.searchHero(searchedExpression).then(response => actions.fillAutocompleteTable(response.results))
   },
 
   setHero: hero => state => ({...state, hero}),
 
-  fillAutocompleteTable: heroes => state => ({...state, autocomplete: heroes}),
+  fillAutocompleteTable: heroes => state => {
+    const notInDeckHeroes = heroes.filter(h => !state.cards.deck.map(c => c.id).includes(h.id))
+    return {...state, autocomplete: notInDeckHeroes}
+  },
 
-  cards: {
-    select: hero => state => ({...state, selected: hero.id}),
-    addToDeck: hero => state => ({...state, deck: state.deck.filter(c => c.id !== hero.id).concat([hero])}),
-    removeFromDeck: hero => state => ({...state, deck: state.deck.filter(c => c.id !== hero.id)})
+  updateAutoCompleteTable: () => (state, actions) => actions.fillAutocompleteTable(state.autocomplete),
+
+  addToDeck: hero => (state, actions) => {
+    console.log(state)
+    if (state.cards.deck.length >= state.cards.deckMaxSize) return state
+    setTimeout(actions.updateAutoCompleteTable)
+    return {...state, cards: {...state.cards, deck: state.cards.deck.filter(c => c.id !== hero.id).concat([hero])}}
+  },
+
+  removeFromDeck: hero => (state, actions) => {
+    if (state.cards.deck.length === 0) return state
+    setTimeout(actions.updateAutoCompleteTable)
+    return {...state, cards: {...state.cards, deck: state.cards.deck.filter(c => c.id !== hero.id)}}
   }
 }

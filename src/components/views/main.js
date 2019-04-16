@@ -14,11 +14,27 @@ export default (state, actions) =>
   <main>
     <h1>Hyperbrawl battle royale</h1>
     <div>
-      { deck({...state.cards, actions: actions.cards}) }
+      { deck({
+        ...state.cards,
+        commonCardProps: {
+          decking: actions.removeFromDeck,
+          deckingLabel: 'Remove from the deck'
+        }
+      })}
     </div>
-    <input oninput={ev => actions.search(ev.target.value)} type='text'/>
+    <nav>
+      <input oninput={ev => actions.search(ev.target.value)} id='searchField' type='text' placeholder='Luke Skywalker'/>
+      <button onclick={ev => actions.search(document.getElementById('searchField').value)}>Search</button>
+    </nav>
     <div className='autocomplete cards'>
+      { state.autocomplete.map(hero => card({
+        hero,
+        decking: actions.addToDeck,
+        deckingLabel: 'Add to the deck',
+        selected: hero.id === state.cards.selected
+      }))}
+    </div>
+    <div>
       { state.autocomplete.length === 0 && 'Search a hero.'}
-      { state.autocomplete.map(hero => card({hero, ...actions.cards, selected: hero.id === state.cards.selected, inDeck: false})) }
     </div>
   </main>
