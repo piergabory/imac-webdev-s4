@@ -1,25 +1,25 @@
 {
-  "name": "tds-js-imac2",
-  "version": "0.0.1",
-  "description": "",
+  "name": "generator",
+  "version": "0.0.0",
+  "description": "IMAC engeneering. 4th semester web developement project.",
   "scripts": {
     "start": "webpack-dev-server --port 3000",
     "test": "mocha -b --require @babel/register --colors -w"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/Koroeskohr/tds-js-imac2"
+    "url": "https://gitlab.com/piergabory/imac-webdev-s4"
   },
   "keywords": [
-    "fetch",
-    "functional"
+    "superheroes",
+    "battle royale"
   ],
   "author": "Victor Viale",
   "license": "MIT",
   "bugs": {
-    "url": "https://gitlab.com/Koroeskohr/tds-js-imac2/issues"
+    "url": "https://gitlab.com/piergabory/imac-webdev-s4/issues"
   },
-  "homepage": "https://gitlab.com/Koroeskohr/tds-js-imac2",
+  "homepage": "https://piergabory.com/hyperbrawl",
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.2.2",
