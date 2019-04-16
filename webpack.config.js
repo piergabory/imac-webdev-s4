@@ -9,7 +9,7 @@ const plugins = [
     filename: './bundle.css',
     allChunks: true
   }),
-  new webpack.optimize.ModuleConcatenationPlugin(),
+  new webpack.optimize.ModuleConcatenationPlugin()
 ]
 
 const config = {
@@ -52,4 +52,5 @@ const config = {
   plugins: plugins
 }
 
+// eslint-disable-next-line fp/no-mutation
 module.exports = config
