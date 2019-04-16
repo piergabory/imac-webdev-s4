@@ -14,9 +14,8 @@ export default {
   fillAutocompleteTable: heroes => state => ({...state, autocomplete: heroes}),
 
   cards: {
-    addToDeck: hero => state => {
-      console.log(hero, state)
-      return ({...state, deck: state.deck.concat([hero])})
-    }
+    select: hero => state => ({...state, selected: hero.id}),
+    addToDeck: hero => state => ({...state, deck: state.deck.filter(c => c.id !== hero.id).concat([hero])}),
+    removeFromDeck: hero => state => ({...state, deck: state.deck.filter(c => c.id !== hero.id)})
   }
 }

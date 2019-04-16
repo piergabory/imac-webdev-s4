@@ -7,5 +7,10 @@ body {
 }
 
 .card .image {
-    height: 200px;
+    max-width: 100%;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 10rem);
 }
