@@ -1,4 +1,3 @@
-/* eslint-disable fp/no-mutation */
 const webpack = require('webpack')
 const path = require('path')
 const pkg = require('./package.json')
@@ -10,7 +9,7 @@ const plugins = [
     filename: './bundle.css',
     allChunks: true
   }),
-  new webpack.optimize.ModuleConcatenationPlugin()
+  new webpack.optimize.ModuleConcatenationPlugin(),
 ]
 
 const config = {
@@ -19,11 +18,6 @@ const config = {
     path.resolve(__dirname, './styles/app.css')
   ],
   devtool: 'source-map',
-  devServer: {
-    headers: {
-      'Access-Control-Allow-Origin': '*'
-    }
-  },
   output: {
     path: path.resolve(__dirname, './lib'),
     filename: 'bundle.js',
