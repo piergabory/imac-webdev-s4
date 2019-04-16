@@ -9,12 +9,12 @@ export default props =>
         <img src={props.hero.image.url} alt={props.hero.name} className='image'/>
       </div>
       <div className='stats'>
-        <div className='int'>{props.hero.powerstats.intelligence}</div>
-        <div className='str'>{props.hero.powerstats.strength}</div>
-        <div className='spd'>{props.hero.powerstats.speed}</div>
-        <div className='dur'>{props.hero.powerstats.durability}</div>
-        <div className='pow'>{props.hero.powerstats.power}</div>
-        <div className='cbt'>{props.hero.powerstats.combat}</div>
+        <p className='int'>{props.hero.powerstats.intelligence}</p>
+        <p className='str'>{props.hero.powerstats.strength}</p>
+        <p className='spd'>{props.hero.powerstats.speed}</p>
+        <p className='dur'>{props.hero.powerstats.durability}</p>
+        <p className='pow'>{props.hero.powerstats.power}</p>
+        <p className='cbt'>{props.hero.powerstats.combat}</p>
       </div>
     </div>
     <button onclick={() => props.decking(props.hero)}> {props.deckingLabel} </button>
