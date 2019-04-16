@@ -18,19 +18,19 @@ export default (state, actions) =>
         ...state.cards,
         commonCardProps: {
           decking: actions.removeFromDeck,
-          deckingLabel: 'Remove from the deck'
+          deckingLabel: 'REMOVE'
         }
       })}
     </div>
     <nav>
       <input oninput={ev => actions.search(ev.target.value)} id='searchField' type='text' placeholder='Luke Skywalker'/>
-      <button onclick={() => actions.search(document.getElementById('searchField').value)}>Search</button>
+      <button onclick={() => actions.search(document.getElementById('searchField').value)}>SEARCH</button>
     </nav>
     <div className='autocomplete cards'>
       { state.autocomplete.map(hero => card({
         hero,
         decking: actions.addToDeck,
-        deckingLabel: 'Add to the deck',
+        deckingLabel: 'ADD',
         selected: hero.id === state.cards.selected
       }))}
     </div>

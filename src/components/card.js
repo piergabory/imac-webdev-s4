@@ -7,6 +7,7 @@ export default props =>
         <h3>{props.hero.name}</h3>
         <p>#{props.hero.id}</p>
         <img src={props.hero.image.url} alt={props.hero.name} className='image'/>
+        <p className='bio'>{'This ' + props.hero.work.occupation + ' will kick your ass'}</p>
       </div>
       <div className='stats'>
         <p className='int'>{props.hero.powerstats.intelligence}</p>
@@ -17,5 +18,5 @@ export default props =>
         <p className='cbt'>{props.hero.powerstats.combat}</p>
       </div>
     </div>
-    <button onclick={() => props.decking(props.hero)}> {props.deckingLabel} </button>
+    <button className='cardbutton' onclick={() => props.decking(props.hero)}> {props.deckingLabel} </button>
   </article>
