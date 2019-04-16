@@ -1,10 +1,18 @@
 const apiAccessToken = 1115531291985896
-const apiRoot = 'https://superheroapi.com/api/'
+const apiRoot = 'http://superheroapi.com/api/'
 
 const getHero = id => {
   return new Promise((resolve, reject) => {
     fetch(`${apiRoot}/${apiAccessToken}/${id}`,
-      {method: 'GET', headers: {'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': '*'}})
+      {
+        method: 'GET',
+        mode: 'no-cors',
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+          'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+        }
+      })
       .then(response => resolve(response.json()))
       .catch(reject)
   })

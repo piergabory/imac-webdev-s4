@@ -13,7 +13,7 @@ import deck from '../deck'
 export default (state, actions) =>
   <main>
     <h1>Hyperbrawl battle royale</h1>
-    <div>
+    <div className='deckWrapper'>
       { deck({
         ...state.cards,
         commonCardProps: {
