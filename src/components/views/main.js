@@ -7,34 +7,20 @@
 // generates the html code from the jsx. Needs to be inside any view or component file.
 
 import { h } from 'hyperapp'
-import card from '../card'
-import deck from '../deck'
+import Deck from '../deck'
+
+import SearchScreen from '../screens/search.screen'
+import RoundScreen from '../screens/round.screen'
+import FinalResultScreen from '../screens/finalResult.screen'
 
 export default (state, actions) =>
   <main>
     <h1>Hyperbrawl battle royale</h1>
-    <div className='deckWrapper'>
-      { deck({
-        ...state.cards,
-        commonCardProps: {
-          decking: actions.removeFromDeck,
-          deckingLabel: 'Remove from the deck'
-        }
-      })}
-    </div>
-    <nav>
-      <input oninput={ev => actions.search(ev.target.value)} id='searchField' type='text' placeholder='Luke Skywalker'/>
-      <button onclick={() => actions.search(document.getElementById('searchField').value)}>Search</button>
-    </nav>
-    <div className='autocomplete cards'>
-      { state.autocomplete.map(hero => card({
-        hero,
-        decking: actions.addToDeck,
-        deckingLabel: 'Add to the deck',
-        selected: hero.id === state.cards.selected
-      }))}
-    </div>
-    <div>
-      { state.autocomplete.length === 0 && 'Search a hero.'}
-    </div>
+
+    { state.step === 0 && <SearchScreen state={state.search} ignore={state.deck.cards} onSelection={actions.deck.add} actions={actions.search}/> }
+    { state.step === 1 && <RoundScreen/> }
+    { state.step === 2 && <FinalResultScreen/> }
+
+    <Deck state={state.deck} actions={actions.deck}/>
+    <button onclick={() => actions.nextStep()}>NEXT</button>
   </main>

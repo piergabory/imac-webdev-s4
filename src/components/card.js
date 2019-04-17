@@ -1,11 +1,11 @@
 import { h } from 'hyperapp'
 
-export default props =>
-  <article onclick={() => props.select(props.hero)}>
+export default ({hero, decking, deckingLabel}) =>
+  <article>
     <div className='card'>
-      <h3>{props.hero.name}</h3>
-      <p>#{props.hero.id}</p>
-      <img src={props.hero.image.url} alt={props.hero.name} className='image'/>
+      <h3>{hero.name}</h3>
+      <p>#{hero.id}</p>
+      <img src={hero.image.url} alt={hero.name} className='image'/>
     </div>
-    <button onclick={() => props.decking(props.hero)}> {props.deckingLabel} </button>
+    <button onclick={() => decking(hero)}> {deckingLabel} </button>
   </article>

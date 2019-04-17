@@ -1,7 +1,16 @@
 export default {
-  autocomplete: [],
+  step: 0,
+  searchMatches: [],
   cards: {
-    deck: [],
     deckMaxSize: 10
+  },
+
+  search: {
+    matches: []
+  },
+
+  deck: {
+    cards: [],
+    maxSize: 20
   }
 }

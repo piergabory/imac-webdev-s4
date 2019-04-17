@@ -1,6 +1,6 @@
 import { h } from 'hyperapp'
 
-export default (state, action) =>
+export default () =>
   <div class='wrapper'>
-    Search
+    Victory view
   </div>

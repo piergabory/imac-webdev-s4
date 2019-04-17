@@ -1,29 +1,24 @@
 import api from '../api/apiGateway'
 
 export default {
-  search: searchedExpression => (_, actions) => {
-    api.searchHero(searchedExpression).then(response => actions.fillAutocompleteTable(response.results))
+
+  nextStep: () => state => ({...state, step: (state.step + 1) % 3}),
+
+  search: {
+    search: searchedExpression => (_, actions) => {
+      api.searchHero(searchedExpression).then(response => actions.updateMatches(response.results))
+    },
+    updateMatches: matches => state => ({...state, matches})
   },
 
-  setHero: hero => state => ({...state, hero}),
+  deck: {
+    remove: hero => state => ({...state, cards: state.cards.filter(card => card.id !== hero.id)}),
 
-  fillAutocompleteTable: heroes => state => {
-    const notInDeckHeroes = heroes.filter(h => !state.cards.deck.map(c => c.id).includes(h.id))
-    return {...state, autocomplete: notInDeckHeroes}
-  },
-
-  updateAutoCompleteTable: () => (state, actions) => actions.fillAutocompleteTable(state.autocomplete),
-
-  addToDeck: hero => (state, actions) => {
-    console.log(state)
-    if (state.cards.deck.length >= state.cards.deckMaxSize) return state
-    setTimeout(actions.updateAutoCompleteTable)
-    return {...state, cards: {...state.cards, deck: state.cards.deck.filter(c => c.id !== hero.id).concat([hero])}}
-  },
-
-  removeFromDeck: hero => (state, actions) => {
-    if (state.cards.deck.length === 0) return state
-    setTimeout(actions.updateAutoCompleteTable)
-    return {...state, cards: {...state.cards, deck: state.cards.deck.filter(c => c.id !== hero.id)}}
+    // adds with no doubles
+    add: hero => (state, actions) => {
+      if (state.cards.length >= state.maxSize) return state
+      actions.remove(hero)
+      return {...state, cards: state.cards.concat([hero])}
+    }
   }
 }
