@@ -1,9 +1,6 @@
 export default {
   step: 0,
-  searchMatches: [],
-  cards: {
-    deckMaxSize: 10
-  },
+  isStepComplete: false,
 
   search: {
     matches: []
@@ -11,6 +8,16 @@ export default {
 
   deck: {
     cards: [],
-    maxSize: 20
+    maxSize: 2,
+    preview: null
+  },
+
+  round: {
+    leftTeam: [],
+    rightTeam: [],
+    weights: {
+
+    },
+    teamSize: 2
   }
 }

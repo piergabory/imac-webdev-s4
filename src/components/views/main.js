@@ -17,10 +17,21 @@ export default (state, actions) =>
   <main>
     <h1>Hyperbrawl battle royale</h1>
 
-    { state.step === 0 && <SearchScreen state={state.search} ignore={state.deck.cards} onSelection={actions.deck.add} actions={actions.search}/> }
-    { state.step === 1 && <RoundScreen/> }
+    { state.step === 0 && <SearchScreen
+      state={state.search}
+      ignore={state.deck.cards}
+      onSelection={actions.deck.add}
+      actions={actions.search}
+    /> }
+
+    { state.step === 1 && <RoundScreen
+      state={state.round}
+      gatherTeamFromDeckAction={actions.gatherTeamsFromDeck}
+      fightRoundAction={actions.fightTeams}
+      isLastRound={state.deck.cards.length < state.round.teamSize}
+    /> }
     { state.step === 2 && <FinalResultScreen/> }
 
-    <Deck state={state.deck} actions={actions.deck}/>
-    <button onclick={() => actions.nextStep()}>NEXT</button>
+    <Deck state={state.deck} actions={actions.deck} onupdate={actions.checkStepCompletion}/>
+    <button disabled={!state.isStepComplete} onclick={() => actions.nextStep()}>NEXT</button>
   </main>
