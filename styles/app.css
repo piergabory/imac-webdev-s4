@@ -85,7 +85,7 @@ h3 {
     padding-bottom: 10px;
     width: 30%;
 
-    background-color: black;
+    background-color: silver;
     color: white;
     border-radius: 0px 15px 15px 0px;
 }
@@ -98,7 +98,7 @@ h3 {
     line-height: 45px;
     text-align: center; 
 
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 100%;
     background-color: grey;
 }
@@ -151,12 +151,14 @@ button {
     padding: 5px 5px;
     text-decoration: none;
     display: inline-block;
-    border-radius: 10px;
+    border-radius: 50px;
     transition-duration: 0.4s;
 }
 
 .cardbutton {
-    margin:auto;
+    margin-left :auto;
+    margin-right: auto;
+    align-self: center;
 }
 button:hover {
     border: 3px solid orange;
