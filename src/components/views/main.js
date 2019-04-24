@@ -31,6 +31,6 @@ export default (state, actions) =>
     /> }
     { state.step === 2 && <FinalResultScreen/> }
 
-    <Deck state={state.deck} actions={actions.deck} onupdate={actions.checkStepCompletion}/>
+    <Deck state={state.deck} actions={actions.deck} onupdate={actions.checkStepCompletion} isEditable={state.step === 0}/>
     <button disabled={!state.isStepComplete} onclick={() => actions.nextStep()}>NEXT</button>
   </main>
