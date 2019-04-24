@@ -45,8 +45,8 @@ export default {
     // adds with no doubles
     add: hero => (state, actions) => {
       if (state.cards.length >= state.maxSize) return state
-      actions.remove(hero)
-      return {...state, cards: state.cards.concat([hero])}
+      const newState = actions.remove(hero)
+      return {...newState, cards: newState.cards.concat([hero])}
     }
   },
 
