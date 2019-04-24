@@ -15,9 +15,7 @@ export default {
   round: {
     leftTeam: [],
     rightTeam: [],
-    weights: {
-
-    },
+    environment: null,
     teamSize: 1,
     isLastRound: false
   }

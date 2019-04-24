@@ -1,8 +1,20 @@
 import api from '../api/apiGateway'
+import { defineEnvironment, fight } from './combat'
 
 export default {
 
-  nextStep: () => state => ({...state, step: (state.step + 1) % 3}),
+  nextStep: () => state => ({
+    ...state,
+    step: (state.step + 1) % 3,
+
+    // reset on step change
+    round: {
+      ...state.round,
+      isLastRound: false,
+      leftTeam: [],
+      rightTeam: []
+    }
+  }),
 
   checkStepCompletion: () => state => {
     const isStepComplete =
@@ -40,7 +52,6 @@ export default {
 
   gatherTeamsFromDeck: () => state => {
     // guards. Cant overwrite teams (normally this is prevented by button disabled)
-    console.log(state.round.isLastRound)
     if (state.round.isLastRound) return {state}
     if (state.round.leftTeam.length > 0) return {state}
     if (state.round.rightTeam.length > 0) return {state}
@@ -54,6 +65,8 @@ export default {
       return Array(teamSize).fill(getRandomIndex).map(index => fromDeck[index(fromDeck.length)])
     }
 
+    // define combat environment
+    const environment = defineEnvironment()
     const deck = state.deck.cards
     const leftTeam = createTeam(deck)
     const reducedDeck = deck.filter(hero => !leftTeam.includes(hero))
@@ -62,17 +75,15 @@ export default {
 
     return {
       ...state,
-      round: { ...state.round, leftTeam, rightTeam },
+      round: { ...state.round, leftTeam, rightTeam, environment },
       deck: {...state.deck, cards: veryReducedDeck}
     }
   },
 
-  fightTeams: () => (state) => {
-    const compareTeams = (left, right) => right
-    const survivors = compareTeams(state.round.leftTeam, state.round.rightTeam)
+  fightTeams: () => state => {
+    const survivors = fight(state.round.leftTeam, state.round.rightTeam, state.round.environment)
     const deck = state.deck.cards.concat(survivors)
     const isLastRound = deck.length <= state.round.teamSize
-    console.log(isLastRound)
 
     return {
       ...state,
