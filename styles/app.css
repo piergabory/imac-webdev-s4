@@ -18,6 +18,7 @@ h1 {
     font-size: 1.4rem; 
     font-family: 'Quicksand';
     font-weight: bold;
+    text-align: center;
 }
 h2 { 
     font-size: 1.2rem; 
@@ -52,6 +53,8 @@ h3 {
     background-color: beige;
     border-radius: 15px;
     box-shadow: 10px 5px 5px rgb(180, 180, 180);
+
+    transition: all 0.25s;
 }
 
 .basics {
@@ -101,10 +104,12 @@ h3 {
     border: 1px solid white;
     border-radius: 100%;
     background-color: grey;
+    background-repeat: no-repeat;
 }
 
 .int {
-    background-color: rgb(111, 189, 189)
+    background-color: rgb(111, 189, 189);
+    /*background-image: url('img/brain.png');*/
 }
 .str {
     background-color: rgb(155, 136, 76)
@@ -139,6 +144,12 @@ h3 {
     margin: 1rem 0;
     padding: 1rem;
     border: solid 1px #BBB;
+}
+
+.deck .card:hover, .card:focus {
+    z-index: 1;
+    transform: scale(1.1);
+    top: -15px;
 }
 
 button {
