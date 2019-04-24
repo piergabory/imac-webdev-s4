@@ -12,20 +12,12 @@ const plugins = [
   new webpack.optimize.ModuleConcatenationPlugin()
 ]
 
-const config = {
+// eslint-disable-next-line fp/no-mutation
+module.exports = {
   entry: [
     path.resolve(__dirname, './src/index.js'),
     path.resolve(__dirname, './styles/app.css')
   ],
-  devServer: {
-    historyApiFallback: true,
-    watchOptions: { aggregateTimeout: 300, poll: 1000 },
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
-    }
-  },
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, './lib'),
@@ -58,8 +50,13 @@ const config = {
     modules: [path.resolve('./node_modules'), path.resolve('./src')],
     extensions: ['.json', '.js']
   },
-  plugins: plugins
+  plugins: plugins,
+  devServer: {
+    port: 8000,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+    }
+  }
 }
-
-// eslint-disable-next-line fp/no-mutation
-module.exports = config
