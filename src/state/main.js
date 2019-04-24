@@ -8,7 +8,7 @@ export default {
 
   deck: {
     cards: [],
-    maxSize: 3,
+    maxSize: 6,
     preview: null
   },
 
@@ -16,7 +16,7 @@ export default {
     leftTeam: [],
     rightTeam: [],
     environment: null,
-    teamSize: 1,
+    teamSize: 2,
     isLastRound: false
   }
 }

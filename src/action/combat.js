@@ -17,6 +17,9 @@ const score = (team, weight) => {
   }, 0)
 }
 
+// generate an index between 0 and upTo
+const getRandomIndex = (upTo) => Math.floor(Math.random() * upTo)
+
 export const defineEnvironment = () => {
   const randomIndex = Math.floor(Math.random() * environments.length)
   return environments[randomIndex]
@@ -26,4 +29,13 @@ export const fight = (leftTeam, rightTeam, environment) => {
   const leftTeamScore = score(leftTeam, environment.statisticsWeights)
   const rightTeamScore = score(rightTeam, environment.statisticsWeights)
   return leftTeamScore > rightTeamScore ? leftTeam : rightTeam
+}
+
+export const createTeam = (ofSize, fromDeck) => {
+  const teamSize = Math.min(ofSize, fromDeck.length)
+  return Array(teamSize).fill(0).reduce((selected) => {
+    const reducedDeck = fromDeck.filter(cards => !selected.includes(cards))
+    const newTeammate = reducedDeck[getRandomIndex(reducedDeck.length)]
+    return selected.concat(newTeammate)
+  }, [])
 }

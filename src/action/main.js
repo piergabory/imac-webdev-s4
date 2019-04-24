@@ -1,5 +1,5 @@
 import api from '../api/apiGateway'
-import { defineEnvironment, fight } from './combat'
+import { defineEnvironment, fight, createTeam } from './combat'
 
 export default {
 
@@ -56,21 +56,11 @@ export default {
     if (state.round.leftTeam.length > 0) return {state}
     if (state.round.rightTeam.length > 0) return {state}
 
-    // generate an index between 0 and upTo
-    const getRandomIndex = (upTo) => Math.floor(Math.random() * upTo)
-
-    // grabs random heroes from a collections
-    const createTeam = (fromDeck) => {
-      const teamSize = Math.min(state.round.teamSize, fromDeck.length)
-      return Array(teamSize).fill(getRandomIndex).map(index => fromDeck[index(fromDeck.length)])
-    }
-
-    // define combat environment
     const environment = defineEnvironment()
     const deck = state.deck.cards
-    const leftTeam = createTeam(deck)
+    const leftTeam = createTeam(state.round.teamSize, deck)
     const reducedDeck = deck.filter(hero => !leftTeam.includes(hero))
-    const rightTeam = createTeam(reducedDeck)
+    const rightTeam = createTeam(state.round.teamSize, reducedDeck)
     const veryReducedDeck = reducedDeck.filter(hero => !rightTeam.includes(hero))
 
     return {
