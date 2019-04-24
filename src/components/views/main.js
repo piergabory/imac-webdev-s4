@@ -28,7 +28,6 @@ export default (state, actions) =>
       state={state.round}
       gatherTeamFromDeckAction={actions.gatherTeamsFromDeck}
       fightRoundAction={actions.fightTeams}
-      isLastRound={state.deck.cards.length < state.round.teamSize}
     /> }
     { state.step === 2 && <FinalResultScreen/> }
 

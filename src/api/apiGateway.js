@@ -21,7 +21,14 @@ const getHero = id => {
 const searchHero = keyword => {
   return new Promise((resolve, reject) => {
     fetch(`${apiRoot}/${apiAccessToken}/search/${keyword}`)
-      .then(response => resolve(response.json()))
+      .then(response => {
+        try {
+          resolve(response.json())
+        } catch (error) {
+          console.error(error, response)
+          resolve(response)
+        }
+      })
       .catch(reject)
   })
 }

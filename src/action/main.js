@@ -10,7 +10,7 @@ export default {
     (state.step === 0 && state.deck.cards.length === state.deck.maxSize) ||
 
     // round continues up to the last standing
-    (state.step === 1 && state.deck.cards.length === 1) ||
+    (state.step === 1 && state.deck.cards.length <= state.round.teamSize && state.round.leftTeam.length === 0 && state.round.rightTeam.length === 0) ||
 
     // victory screen has no requirements
     (state.step >= 2)
@@ -39,22 +39,45 @@ export default {
   },
 
   gatherTeamsFromDeck: () => state => {
-    const getRandomIndex = Math.round(Math.random() * state.deck.cards.length)
-    const createTeam = [].fill(0, state.round.teamSize).map(state.deck.cards[getRandomIndex()])
+    // guards. Cant overwrite teams (normally this is prevented by button disabled)
+    console.log(state.round.isLastRound)
+    if (state.round.isLastRound) return {state}
+    if (state.round.leftTeam.length > 0) return {state}
+    if (state.round.rightTeam.length > 0) return {state}
+
+    // generate an index between 0 and upTo
+    const getRandomIndex = (upTo) => Math.floor(Math.random() * upTo)
+
+    // grabs random heroes from a collections
+    const createTeam = (fromDeck) => {
+      const teamSize = Math.min(state.round.teamSize, fromDeck.length)
+      return Array(teamSize).fill(getRandomIndex).map(index => fromDeck[index(fromDeck.length)])
+    }
+
+    const deck = state.deck.cards
+    const leftTeam = createTeam(deck)
+    const reducedDeck = deck.filter(hero => !leftTeam.includes(hero))
+    const rightTeam = createTeam(reducedDeck)
+    const veryReducedDeck = reducedDeck.filter(hero => !rightTeam.includes(hero))
 
     return {
       ...state,
-      round: {
-        ...state.round,
-        leftTeam: createTeam(),
-        rightTeam: createTeam()
-      }
+      round: { ...state.round, leftTeam, rightTeam },
+      deck: {...state.deck, cards: veryReducedDeck}
     }
   },
 
-  fightTeams: (left, right) => (state, actions) => {
+  fightTeams: () => (state) => {
     const compareTeams = (left, right) => right
-    compareTeams(left, right).map(survivor => actions.deck.add(survivor))
-    return { ...state, round: { ...state.round, leftTeam: [], rightTeam: [] } }
+    const survivors = compareTeams(state.round.leftTeam, state.round.rightTeam)
+    const deck = state.deck.cards.concat(survivors)
+    const isLastRound = deck.length <= state.round.teamSize
+    console.log(isLastRound)
+
+    return {
+      ...state,
+      round: { ...state.round, leftTeam: [], rightTeam: [], isLastRound },
+      deck: { ...state.deck, cards: deck }
+    }
   }
 }

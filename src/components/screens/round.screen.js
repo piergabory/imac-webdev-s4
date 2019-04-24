@@ -1,18 +1,20 @@
 import { h } from 'hyperapp'
 import Card from '../card'
 
-export default ({state, gatherTeamFromDeckAction, fightRoundAction, isLastRound}) =>
-  <div class='wrapper'>
-    <section>
-      <div>
-        <article>{ state.leftTeam.map(h => <Card hero={h}/>) }</article>
-        <article>{ state.rightTeam.map(h => <Card hero={h}/>) }</article>
-      </div>
-      <button onclick={() => {
-        (state.leftTeam.length !== 0 && state.rightTeam.length !== 0) && fightRoundAction()
-        isLastRound && gatherTeamFromDeckAction()
-      }}>
-      Next Round
-      </button>
-    </section>
-  </div>
+export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
+  const cannotGatherTeam = state.isLastRound || (state.leftTeam.length > 0 || state.rightTeam.length > 0)
+  const cannotFight = state.isLastRound || (state.leftTeam.length === 0 || state.rightTeam.length === 0)
+
+  return (
+    <div class='wrapper'>
+      <section>
+        <div className='opposingTeams'>
+          <article className='cards'>{ state.leftTeam.map(hero => <Card hero={hero}/>) }</article>
+          <article className='cards'>{ state.rightTeam.map(hero => <Card hero={hero}/>) }</article>
+        </div>
+        <button onclick={() => gatherTeamFromDeckAction()} disabled={cannotGatherTeam} >Next Round</button>
+        <button onclick={() => fightRoundAction()} disabled={cannotFight} >Fight!</button>
+      </section>
+    </div>
+  )
+}
