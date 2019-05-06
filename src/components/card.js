@@ -1,4 +1,5 @@
 import { h } from 'hyperapp'
+import Chart from './heroChart'
 
 export default ({hero, decking = false, deckingLabel = false, discard = false, discardLabel = false, onclick = false}) =>
   <article>
@@ -17,6 +18,7 @@ export default ({hero, decking = false, deckingLabel = false, discard = false, d
         <p className='pow'>{hero.powerstats.power}</p>
         <p className='cbt'>{hero.powerstats.combat}</p>
       </div>
+      {/* <Chart type='bar' data={Object.values(hero.powerstats)}/> */}
     </div>
     { discardLabel && discard && <button onclick={() => discard(hero)} className='discard'> {discardLabel} </button> }
     { deckingLabel && decking && <button onclick={() => decking(hero)} className='decking'> {deckingLabel} </button> }

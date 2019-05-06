@@ -13,7 +13,14 @@ const getHero = id => {
           'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
         }
       })
-      .then(response => resolve(response.json()))
+      .then(response => {
+        try {
+          return resolve(response.json())
+        } catch (error) {
+          console.error('json parse error:', error)
+          return {}
+        }
+      })
       .catch(reject)
   })
 }
