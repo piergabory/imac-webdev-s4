@@ -8,8 +8,8 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
   const cannotFight = state.isLastRound || !areTeamFormed
 
   return (
-    <div class='wrapper'>
-      <section>
+    <div class='roundwrapper'>
+      <section class='versusleft'>
         { areTeamFormed && (
           <div className='opposingTeams'>
             <article className='cards'>{ state.leftTeam.map(hero => <Card hero={hero}/>) }</article>
@@ -20,6 +20,9 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
         )}
         <button onclick={() => gatherTeamFromDeckAction()} disabled={cannotGatherTeam} >Next Round</button>
         <button onclick={() => fightRoundAction()} disabled={cannotFight} >Fight!</button>
+      </section>
+      <section class='versusright'>
+        <p>here comes the radars</p>
       </section>
     </div>
   )

@@ -1,13 +1,15 @@
 import { h } from 'hyperapp'
 
 export default ({hero, decking = false, deckingLabel = false, discard = false, discardLabel = false, onclick = false}) =>
-  <article>
+  <article className='cardwrapper'>
     <div className='card' onclick={onclick || console.log}>
       <div className='basics'>
         <h3>{hero.name}</h3>
-        <p>#{hero.id}</p>
         <img src={hero.image.url} alt={hero.name} className='image'/>
         <p className='bio'>{'This ' + hero.work.occupation + ' will kick your ass'}</p>
+        <div class='statchart'>
+          <p>here comes the cart</p>
+        </div>
       </div>
       <div className='stats'>
         <p className='int'>{hero.powerstats.intelligence}</p>

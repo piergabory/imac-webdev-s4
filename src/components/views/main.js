@@ -16,21 +16,18 @@ import FinalResultScreen from '../screens/finalResult.screen'
 export default (state, actions) =>
   <main>
     <h1>Hyperbrawl battle royale</h1>
-
     { state.step === 0 && <SearchScreen
       state={state.search}
       ignore={state.deck.cards}
       onSelection={actions.deck.add}
       actions={actions.search}
     /> }
-
     { state.step === 1 && <RoundScreen
       state={state.round}
       gatherTeamFromDeckAction={actions.gatherTeamsFromDeck}
       fightRoundAction={actions.fightTeams}
     /> }
     { state.step === 2 && <FinalResultScreen/> }
-
     <Deck state={state.deck} actions={actions.deck} onupdate={actions.checkStepCompletion} isEditable={state.step === 0}/>
     <button disabled={!state.isStepComplete} onclick={() => actions.nextStep()}>NEXT</button>
   </main>

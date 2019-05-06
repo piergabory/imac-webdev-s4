@@ -134,22 +134,47 @@ h3 {
     object-fit: contain;
 }
 
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 6rem);
-    grid-gap: 1rem;
+.searchcards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
 }
 
-.deck .cards {
+.deckcards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.deckcards .card {
+    margin-right: -10rem;
+}
+
+.deckwrapper {
+    border: solid 1px #BBB;
+    padding-right: 10rem;
+}
+.cardwrapper {
     margin: 1rem 0;
     padding: 1rem;
-    border: solid 1px #BBB;
 }
 
-.deck .card:hover, .card:focus {
+.deckwrapper .cardwrapper .discard {
+    display: none;
+}
+.deckwrapper .cardwrapper:hover .discard {
+    display: inline;
+    position: relative;
+    top: -100%;
+}
+
+.deckcards .card:hover, .deckcard:focus {
     z-index: 1;
     transform: scale(1.1);
-    top: -15px;
 }
 
 button {
@@ -159,6 +184,7 @@ button {
     font-family: 'Lato';
     font-weight: medium;
     text-align: center;
+    min-width: 50px;
     padding: 5px 5px;
     text-decoration: none;
     display: inline-block;
@@ -186,4 +212,21 @@ button:hover {
     border: 3px solid orange;
     background-color: white;
     color: orange;
+}
+
+.searchwrapper {
+    width: 100%;
+}
+
+.roundwrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.versusleft, .versusright {
+width: 50%;
+border: 2px solid red;
 }
