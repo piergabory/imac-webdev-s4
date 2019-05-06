@@ -166,6 +166,17 @@ button {
     transition-duration: 0.4s;
 }
 
+button:disabled {
+    background-color: lightgrey;
+    border: 3px solid lightgrey;
+}
+
+button:disabled:hover {
+    background-color: lightgrey;
+    border: 3px solid lightgrey;
+    color: white;
+}
+
 .cardbutton {
     margin-left :auto;
     margin-right: auto;
