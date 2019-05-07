@@ -3,21 +3,28 @@ import { defineEnvironment, fight, createTeam } from './combat'
 
 export default {
 
-  nextStep: () => state => ({
-    ...state,
-    step: (state.step + 1) % 3,
+  nextStep: () => state => {
+    const step = (state.step + 1) % 3
 
-    // reset on step change
-    round: {
-      ...state.round,
-      isLastRound: false,
-      leftTeam: [],
-      rightTeam: []
-    },
+    const defaultState = {
+      ...state,
+      step,
 
-    history: state.step === 2 ? [] : state.history,
-    startingDeck: state.step === 0 ? state.deck : state.startingDeck
-  }),
+      // reset on step change
+      round: {
+        ...state.round,
+        isLastRound: false,
+        leftTeam: [],
+        rightTeam: []
+      }
+    }
+
+    switch (step) {
+      case 0: return { ...defaultState, history: [] }
+      case 1: return { ...defaultState, history: [state.deck.cards] }
+      case 2: return { ...defaultState, history: state.history.concat([state.deck.cards]) }
+    }
+  },
 
   checkStepCompletion: () => state => {
     const isStepComplete =
@@ -77,16 +84,13 @@ export default {
 
   fightTeams: () => state => {
     const survivors = fight(state.round.leftTeam, state.round.rightTeam, state.round.environment)
-    // const nonSurvivors = state.deck.cards.filter(card => !survivors.includes(card))
-
     const deck = state.deck.cards.concat(survivors)
     const isLastRound = deck.length <= state.round.teamSize
-
     return {
       ...state,
       round: { ...state.round, leftTeam: [], rightTeam: [], isLastRound },
       deck: { ...state.deck, cards: deck },
-      history: history.concat(survivors)
+      history: state.history.concat([deck])
     }
   }
 

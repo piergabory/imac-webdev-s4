@@ -20,6 +20,5 @@ export default {
     isLastRound: false
   },
 
-  history: [],
-  startingDeck: { cards: [] }
+  history: []
 }

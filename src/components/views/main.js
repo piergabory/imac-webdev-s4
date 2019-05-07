@@ -22,14 +22,15 @@ export default (state, actions) =>
       onSelection={actions.deck.add}
       actions={actions.search}
     /> }
+
     { state.step === 1 && <RoundScreen
       state={state.round}
       gatherTeamFromDeckAction={actions.gatherTeamsFromDeck}
       fightRoundAction={actions.fightTeams}
     /> }
+
     { state.step === 2 && <FinalResultScreen
       history={state.history}
-      startingDeck={state.startingDeck}
     /> }
 
     <Deck state={state.deck} actions={actions.deck} onupdate={actions.checkStepCompletion} isEditable={state.step === 0}/>
