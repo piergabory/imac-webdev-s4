@@ -1,5 +1,5 @@
 import { h } from 'hyperapp'
-import Chart from '../heroChart'
+import Chart from '../charts/chart'
 
 export default ({history, startingDeck}) => {
   const getHeroLineGraph = hero => history.map(survivors => survivors.includes(hero) ? 0 : 1)

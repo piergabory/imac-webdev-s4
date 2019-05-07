@@ -1,15 +1,7 @@
 import { h } from 'hyperapp'
-import Chart from './heroChart'
+import Powerstats from './charts/heroPowerstatsChart'
 
 export default ({hero, decking = false, deckingLabel = false, discard = false, discardLabel = false, onclick = false}) => {
-  const chartData = {
-    labels: [ 'Intelligence', 'Strength', 'Speed', 'Durability', 'Power', 'Combat' ],
-    datasets: [{
-      data: Object.values(hero.powerstats).map(stat => parseInt(stat) || 0),
-      backgroundColor: ['#FF0000', '#FF0000', '#FF0000', '#FF0000', '#FF0000', '#FF0000']
-    }]
-  }
-
   return <article className='cardwrapper'>
     <div className='card' onclick={onclick || console.log}>
       <div className='basics'>
@@ -18,6 +10,7 @@ export default ({hero, decking = false, deckingLabel = false, discard = false, d
         <p className='bio'>{'This ' + hero.work.occupation + ' will kick your ass'}</p>
         <div class='statchart'>
           <p>here comes the cart</p>
+          <Powerstats hero={hero}/>
         </div>
       </div>
       <div className='stats'>

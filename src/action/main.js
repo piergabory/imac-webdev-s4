@@ -34,8 +34,10 @@ export default {
   },
 
   search: {
-    search: searchedExpression => (_, actions) => {
-      api.searchHero(searchedExpression).then(response => actions.updateMatches(response.results))
+    search: searchedExpression => (state, actions) => {
+      state.query && clearTimeout(state.query)
+      const query = setTimeout(() => api.searchHero(searchedExpression).then(response => actions.updateMatches(response.results)), 300)
+      return {...state, query}
     },
     updateMatches: matches => state => ({...state, matches}),
     preview: card => state => ({...state, preview: card}),
