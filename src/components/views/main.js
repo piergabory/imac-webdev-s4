@@ -28,6 +28,6 @@ export default (state, actions) =>
       fightRoundAction={actions.fightTeams}
     /> }
     { state.step === 2 && <FinalResultScreen/> }
-    <Deck state={state.deck} actions={actions.deck} onupdate={actions.checkStepCompletion} isEditable={state.step === 0}/>
+    { state.step !== 1 && <Deck state={state.deck} actions={actions.deck} onupdate={actions.checkStepCompletion} isEditable={state.step === 0}/>}
     <button disabled={!state.isStepComplete} onclick={() => actions.nextStep()}>NEXT</button>
   </main>

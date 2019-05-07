@@ -20,11 +20,13 @@ h1 {
     font-weight: bold;
     text-align: center;
 }
+
 h2 { 
     font-size: 1.2rem; 
     font-family: 'Quicksand';
     font-weight: medium;
 }
+
 h3 { 
     font-size: 1.1rem; 
     font-family: 'Quicksand';
@@ -32,10 +34,39 @@ h3 {
     margin: 0;
 }
 
-.autocomplete.cards {
+.searchwrapper {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+}
+
+.deckwrapper {
+    padding-right: 10rem;
+}
+
+.roundwrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.cardwrapper {
+    margin: 1rem 0;
+    padding: 1rem;
+}
+
+.searchcards {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
 }
 
 .card {
@@ -52,7 +83,7 @@ h3 {
 
     background-color: beige;
     border-radius: 15px;
-    box-shadow: 10px 5px 5px rgb(180, 180, 180);
+    box-shadow:  -5px 5px 5px rgb(180, 180, 180);
 
     transition: all 0.25s;
 }
@@ -64,67 +95,23 @@ h3 {
 
     padding: 5px;
     min-height: 10rem;
-    width: 75%;
+    width: 100%;
 
     background-color: white;
     text-align: center;
-    border-radius: 15px 0px 0px 15px;
+    border-radius: 15px 15px 15px 15px;
+}
+
+.name {
+    margin-bottom: 1rem;
 }
 
 .bio {
-    margin-top: 20px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     font-family: 'Lato', Tahoma, sans-serif;
-    font-size: 0.9rem;
-}
-
-.stats {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-
-    padding-top: 10px;
-    padding-bottom: 10px;
-    width: 30%;
-
-    background-color: silver;
-    color: white;
-    border-radius: 0px 15px 15px 0px;
-}
-
-.int, .str, .spd, .dur, .pow, .cbt {
-    margin: auto;
-    width: 45px;
-    height: 45px;
-
-    line-height: 45px;
-    text-align: center; 
-
-    border: 1px solid white;
-    border-radius: 100%;
-    background-color: grey;
-    background-repeat: no-repeat;
-}
-
-.int {
-    background-color: rgb(111, 189, 189);
-    /*background-image: url('img/brain.png');*/
-}
-.str {
-    background-color: rgb(155, 136, 76)
-}
-.spd {
-    background-color: rgb(193, 206, 230)
-}
-.dur {
-    background-color: rgb(189, 111, 182)
-}
-.pow {
-    background-color: rgb(111, 189, 115)
-}
-.cbt {
-    background-color: rgb(189, 111, 111)
+    font-size: 0.8rem;
+    text-align: center;
 }
 
 .card .image {
@@ -132,14 +119,6 @@ h3 {
     height: 6rem;
     overflow: hidden;
     object-fit: contain;
-}
-
-.searchcards {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: flex-start;
 }
 
 .deckcards {
@@ -152,15 +131,6 @@ h3 {
 
 .deckcards .card {
     margin-right: -10rem;
-}
-
-.deckwrapper {
-    border: solid 1px #BBB;
-    padding-right: 10rem;
-}
-.cardwrapper {
-    margin: 1rem 0;
-    padding: 1rem;
 }
 
 .deckwrapper .cardwrapper .discard {
@@ -178,7 +148,7 @@ h3 {
 }
 
 button {
-    border: 3px solid orange;
+    border: 2px solid orange;
     background-color: orange;
     color: white;
     font-family: 'Lato';
@@ -194,12 +164,12 @@ button {
 
 button:disabled {
     background-color: lightgrey;
-    border: 3px solid lightgrey;
+    border: 2px solid lightgrey;
 }
 
 button:disabled:hover {
     background-color: lightgrey;
-    border: 3px solid lightgrey;
+    border: 2px solid lightgrey;
     color: white;
 }
 
@@ -209,24 +179,56 @@ button:disabled:hover {
     align-self: center;
 }
 button:hover {
-    border: 3px solid orange;
+    border: 2px solid orange;
     background-color: white;
     color: orange;
 }
 
-.searchwrapper {
-    width: 100%;
-}
-
-.roundwrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-content: center;
-}
-
 .versusleft, .versusright {
 width: 50%;
-border: 2px solid red;
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    body {
+        font-size: 1rem;
+    }
+    h1 { 
+        font-size: 1.2rem; 
+    }
+    h2 { 
+        font-size: 1rem; 
+    }
+
+    h3 { 
+        font-size: 1rem; 
+
+    }
+
+    .card { 
+        height: 16rem;
+        width: 12rem;
+        margin: 0.8rem;
+        padding: 0.5rem;
+    }
+
+    .name {
+        margin-bottom: 0.5rem;
+    }
+
+    .card img {
+        height: 50px;;
+    }
+
+    .bio {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .roundwrapper {
+        flex-direction: column;
+    }
+    
+    .versusleft, .versusright {
+        width: 100%;
+    }
+  }

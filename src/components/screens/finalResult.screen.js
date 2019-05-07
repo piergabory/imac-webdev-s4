@@ -1,9 +1,9 @@
 import { h } from 'hyperapp'
 
 export default () =>
-  <div class='wrapper'>
+  <div className='victorywrapper'>
     <p>And the winners are...</p>
-    <div class='winnerschart'>
+    <div className='winnerschart'>
       <p>here comes the graph</p>
     </div>
   </div>
