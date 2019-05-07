@@ -13,7 +13,10 @@ export default {
       isLastRound: false,
       leftTeam: [],
       rightTeam: []
-    }
+    },
+
+    history: state.step === 2 ? [] : state.history,
+    startingDeck: state.step === 0 ? state.deck : state.startingDeck
   }),
 
   checkStepCompletion: () => state => {
@@ -72,13 +75,17 @@ export default {
 
   fightTeams: () => state => {
     const survivors = fight(state.round.leftTeam, state.round.rightTeam, state.round.environment)
+    // const nonSurvivors = state.deck.cards.filter(card => !survivors.includes(card))
+
     const deck = state.deck.cards.concat(survivors)
     const isLastRound = deck.length <= state.round.teamSize
 
     return {
       ...state,
       round: { ...state.round, leftTeam: [], rightTeam: [], isLastRound },
-      deck: { ...state.deck, cards: deck }
+      deck: { ...state.deck, cards: deck },
+      history: history.concat(survivors)
     }
   }
+
 }

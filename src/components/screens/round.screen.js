@@ -8,6 +8,25 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
   const cannotGatherTeam = state.isLastRound || areTeamFormed
   const cannotFight = state.isLastRound || !areTeamFormed
 
+  const getTeamPowerstats = team => {
+    const powerstats = team.map(hero => Object.values(hero.powerstats).map(s => parseInt(s)))
+    const globalstats = powerstats.reduce((globalstats, herostats) => {
+      return herostats.map((heroStat, statIndex) => {
+        const globalStat = globalstats[statIndex] ? globalstats[statIndex] : 0
+        return globalStat + heroStat
+      })
+    }, [])
+    return globalstats
+  }
+
+  const radarData = areTeamFormed && {
+    labels: [ 'Intelligence', 'Strength', 'Speed', 'Durability', 'Power', 'Combat' ],
+    datasets: [
+      {data: getTeamPowerstats(state.leftTeam), backgroundColor: 'rgba(255,0,0,0.3)', label: 'Team A'},
+      {data: getTeamPowerstats(state.rightTeam), backgroundColor: 'rgba(0,0,255,0.3)', label: 'Team B'}
+    ]
+  }
+
   return (
     <div className='wrapper'>
       <section className='Arena'>
@@ -23,14 +42,11 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
         <button onclick={() => fightRoundAction()} disabled={cannotFight} >Fight!</button>
       </section>
 
-      <section className='comparator'>
-        <Chart type='radar' data={
-          labels:['Team A', 'Team B']
-          datasets: [
-            leftTeam.
-          ]
-        }/>
-      </section>
+      { areTeamFormed && (
+        <section className='comparator'>
+          <Chart type='radar' data={radarData}/>
+        </section>
+      )}
     </div>
   )
 }

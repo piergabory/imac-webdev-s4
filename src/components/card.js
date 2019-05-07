@@ -1,8 +1,16 @@
 import { h } from 'hyperapp'
 import Chart from './heroChart'
 
-export default ({hero, decking = false, deckingLabel = false, discard = false, discardLabel = false, onclick = false}) =>
-  <article>
+export default ({hero, decking = false, deckingLabel = false, discard = false, discardLabel = false, onclick = false}) => {
+  const chartData = {
+    labels: [ 'Intelligence', 'Strength', 'Speed', 'Durability', 'Power', 'Combat' ],
+    datasets: [{
+      data: Object.values(hero.powerstats).map(stat => parseInt(stat) || 0),
+      backgroundColor: ['#FF0000', '#FF0000', '#FF0000', '#FF0000', '#FF0000', '#FF0000']
+    }]
+  }
+
+  return <article>
     <div className='card' onclick={onclick || console.log}>
       <div className='basics'>
         <h3>{hero.name}</h3>
@@ -18,8 +26,9 @@ export default ({hero, decking = false, deckingLabel = false, discard = false, d
         <p className='pow'>{hero.powerstats.power}</p>
         <p className='cbt'>{hero.powerstats.combat}</p>
       </div>
-      {/* <Chart type='bar' data={Object.values(hero.powerstats)}/> */}
+
     </div>
     { discardLabel && discard && <button onclick={() => discard(hero)} className='discard'> {discardLabel} </button> }
     { deckingLabel && decking && <button onclick={() => decking(hero)} className='decking'> {deckingLabel} </button> }
   </article>
+}
