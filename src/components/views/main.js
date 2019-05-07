@@ -22,12 +22,13 @@ export default (state, actions) =>
       onSelection={actions.deck.add}
       actions={actions.search}
     /> }
+
     { state.step === 1 && <RoundScreen
       state={state.round}
       gatherTeamFromDeckAction={actions.gatherTeamsFromDeck}
       fightRoundAction={actions.fightTeams}
     /> }
-    { state.step === 2 && <FinalResultScreen/> }
+    { state.step === 2 && <FinalResultScreen history={state.history} /> }
     { state.step !== 1 && <Deck state={state.deck} actions={actions.deck} onupdate={actions.checkStepCompletion} isEditable={state.step === 0}/>}
     <button disabled={!state.isStepComplete} onclick={() => actions.nextStep()}>NEXT</button>
   </main>

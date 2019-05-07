@@ -3,18 +3,32 @@ import { defineEnvironment, fight, createTeam } from './combat'
 
 export default {
 
-  nextStep: () => state => ({
-    ...state,
-    step: (state.step + 1) % 3,
+  nextStep: () => state => {
+    const step = (state.step + 1) % 3
 
-    // reset on step change
-    round: {
-      ...state.round,
-      isLastRound: false,
-      leftTeam: [],
-      rightTeam: []
+    const defaultState = {
+      ...state,
+      step,
+
+      search: {
+        matches: []
+      },
+
+      // reset on step change
+      round: {
+        ...state.round,
+        isLastRound: false,
+        leftTeam: [],
+        rightTeam: []
+      }
     }
-  }),
+
+    switch (step) {
+      case 0: return { ...defaultState, history: [] }
+      case 1: return { ...defaultState, history: [state.deck.cards] }
+      case 2: return { ...defaultState, history: state.history.concat([state.deck.cards]) }
+    }
+  },
 
   checkStepCompletion: () => state => {
     const isStepComplete =
@@ -31,8 +45,10 @@ export default {
   },
 
   search: {
-    search: searchedExpression => (_, actions) => {
-      api.searchHero(searchedExpression).then(response => actions.updateMatches(response.results))
+    search: searchedExpression => (state, actions) => {
+      state.query && clearTimeout(state.query)
+      const query = setTimeout(() => api.searchHero(searchedExpression).then(response => actions.updateMatches(response.results)), 300)
+      return {...state, query}
     },
     updateMatches: matches => state => ({...state, matches}),
     preview: card => state => ({...state, preview: card}),
@@ -74,11 +90,12 @@ export default {
     const survivors = fight(state.round.leftTeam, state.round.rightTeam, state.round.environment)
     const deck = state.deck.cards.concat(survivors)
     const isLastRound = deck.length <= state.round.teamSize
-
     return {
       ...state,
       round: { ...state.round, leftTeam: [], rightTeam: [], isLastRound },
-      deck: { ...state.deck, cards: deck }
+      deck: { ...state.deck, cards: deck },
+      history: state.history.concat([deck])
     }
   }
+
 }

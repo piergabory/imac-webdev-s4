@@ -1,6 +1,7 @@
 import { h } from 'hyperapp'
 import Card from '../card'
 import Environment from '../environment'
+import TeamPowerstats from '../charts/teamPowerstatsChart'
 
 export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
   const areTeamFormed = (state.leftTeam.length > 0 && state.rightTeam.length > 0)
@@ -9,6 +10,7 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
 
   return (
     <div className='roundwrapper'>
+
       <section className='versusleft'>
         { areTeamFormed && (
           <div className='opposingTeams'>
@@ -21,8 +23,14 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
         <button onclick={() => gatherTeamFromDeckAction()} disabled={cannotGatherTeam} >Next Round</button>
         <button onclick={() => fightRoundAction()} disabled={cannotFight} >Fight!</button>
       </section>
-      <section className='versusright'>
-      </section>
+
+      { areTeamFormed && (
+        <section className='versusright'>
+          <p>here comes the radars</p>
+          <TeamPowerstats teams={[state.leftTeam, state.rightTeam]}/>
+        </section>
+      )}
+
     </div>
   )
 }

@@ -18,5 +18,7 @@ export default {
     environment: null,
     teamSize: 2,
     isLastRound: false
-  }
+  },
+
+  history: []
 }
