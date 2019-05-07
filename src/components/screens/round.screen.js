@@ -28,8 +28,8 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
   }
 
   return (
-    <div className='wrapper'>
-      <section className='Arena'>
+    <div className='roundwrapper'>
+      <section className='versusleft'>
         { areTeamFormed && (
           <div className='opposingTeams'>
             <article className='cards'>{ state.leftTeam.map(hero => <Card hero={hero}/>) }</article>
@@ -41,9 +41,9 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
         <button onclick={() => gatherTeamFromDeckAction()} disabled={cannotGatherTeam} >Next Round</button>
         <button onclick={() => fightRoundAction()} disabled={cannotFight} >Fight!</button>
       </section>
-
       { areTeamFormed && (
-        <section className='comparator'>
+        <section className='versusright'>
+          <p>here comes the radars</p>
           <Chart type='radar' data={radarData}/>
         </section>
       )}

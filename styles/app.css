@@ -18,6 +18,7 @@ h1 {
     font-size: 1.4rem; 
     font-family: 'Quicksand';
     font-weight: bold;
+    text-align: center;
 }
 h2 { 
     font-size: 1.2rem; 
@@ -52,6 +53,8 @@ h3 {
     background-color: beige;
     border-radius: 15px;
     box-shadow: 10px 5px 5px rgb(180, 180, 180);
+
+    transition: all 0.25s;
 }
 
 .basics {
@@ -101,10 +104,12 @@ h3 {
     border: 1px solid white;
     border-radius: 100%;
     background-color: grey;
+    background-repeat: no-repeat;
 }
 
 .int {
-    background-color: rgb(111, 189, 189)
+    background-color: rgb(111, 189, 189);
+    /*background-image: url('img/brain.png');*/
 }
 .str {
     background-color: rgb(155, 136, 76)
@@ -129,16 +134,47 @@ h3 {
     object-fit: contain;
 }
 
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 6rem);
-    grid-gap: 1rem;
+.searchcards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
 }
 
-.deck .cards {
+.deckcards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.deckcards .card {
+    margin-right: -10rem;
+}
+
+.deckwrapper {
+    border: solid 1px #BBB;
+    padding-right: 10rem;
+}
+.cardwrapper {
     margin: 1rem 0;
     padding: 1rem;
-    border: solid 1px #BBB;
+}
+
+.deckwrapper .cardwrapper .discard {
+    display: none;
+}
+.deckwrapper .cardwrapper:hover .discard {
+    display: inline;
+    position: relative;
+    top: -100%;
+}
+
+.deckcards .card:hover, .deckcard:focus {
+    z-index: 1;
+    transform: scale(1.1);
 }
 
 button {
@@ -148,11 +184,23 @@ button {
     font-family: 'Lato';
     font-weight: medium;
     text-align: center;
+    min-width: 50px;
     padding: 5px 5px;
     text-decoration: none;
     display: inline-block;
     border-radius: 50px;
     transition-duration: 0.4s;
+}
+
+button:disabled {
+    background-color: lightgrey;
+    border: 3px solid lightgrey;
+}
+
+button:disabled:hover {
+    background-color: lightgrey;
+    border: 3px solid lightgrey;
+    color: white;
 }
 
 .cardbutton {
@@ -164,4 +212,21 @@ button:hover {
     border: 3px solid orange;
     background-color: white;
     color: orange;
+}
+
+.searchwrapper {
+    width: 100%;
+}
+
+.roundwrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.versusleft, .versusright {
+width: 50%;
+border: 2px solid red;
 }
