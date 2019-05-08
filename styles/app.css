@@ -36,7 +36,8 @@ h3 {
 
 @import 'cardStack.css';
 @import 'card.css';
-@import'deck.css';
+@import 'deck.css';
+@import 'preview.css';
 
 @import 'search.css';
 @import 'round.css';

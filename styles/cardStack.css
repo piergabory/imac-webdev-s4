@@ -12,10 +12,9 @@
   justify-content: center;
   align-items: center;
   margin-right: -14rem;
-  transition: margin-right 300ms;
   position: relative;
   z-index: 100;
-
+  transition: margin-right 300ms, transform 300ms;
   animation: cardAppearInStack 300ms 1 ease-out;
 }
 
@@ -26,9 +25,12 @@
 }
 
 .stackedCardWrapper:not(:last-child):hover {
-  margin-right:2rem
+  margin-right:2rem;
 }
 
+.stackedCardWrapper:hover {
+  transform: scale(1.2) !important;
+}
 
 /* Pseudo-random rotations */
 .stackedCardWrapper:nth-of-type(2n) {
@@ -61,11 +63,6 @@
   display: inline;
   position: relative;
   top: -100%;
-}
-
-.deckcards .card:hover, .deckcard:focus {
-  z-index: 1;
-  transform: scale(1.1);
 }
 
 

@@ -11,6 +11,10 @@
   background: #fcfafe
 }
 
+.searchField:focus {
+  outline: none;
+}
+
 .searchBox {
   width: 100%;
   max-width: 60rem;

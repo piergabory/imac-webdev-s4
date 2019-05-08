@@ -14,3 +14,7 @@
 .deckwrapper:hover {
   bottom: 0rem;
 }
+
+body {
+  padding-bottom: 30rem !important;
+}

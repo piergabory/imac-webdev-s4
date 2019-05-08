@@ -1,0 +1,16 @@
+.preview .cardButton.destructive .glyph {
+  display: none;
+}
+
+.preview .cardButton.destructive:before {
+  display: block;
+  content: 'Hide';
+  font-size: 1.5rem;
+}
+
+.preview .cardButton.destructive {
+  width: auto;
+  padding: 0.25rem 1rem;
+  background-color: orange
+}
+
