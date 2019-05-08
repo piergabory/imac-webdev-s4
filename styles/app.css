@@ -36,9 +36,11 @@ h3 {
 
 @import 'cardStack.css';
 @import 'card.css';
+@import'deck.css';
 
 @import 'search.css';
 @import 'round.css';
+
 
 
 .searchwrapper {
