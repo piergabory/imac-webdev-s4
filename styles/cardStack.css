@@ -41,3 +41,27 @@
 .stackedCardWrapper:nth-of-type(13n) {
   transform: rotate(-10deg)
 }
+
+/* Legacy styles */
+
+.deckcards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.deckwrapper .cardwrapper .discard {
+  display: none;
+}
+.deckwrapper .cardwrapper:hover .discard {
+  display: inline;
+  position: relative;
+  top: -100%;
+}
+
+.deckcards .card:hover, .deckcard:focus {
+  z-index: 1;
+  transform: scale(1.1);
+}
