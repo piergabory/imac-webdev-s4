@@ -11,6 +11,7 @@
   border: 1rem solid beige;
   border-radius: 1rem;
   box-shadow:  -5px 5px 5px rgb(180, 180, 180);
+  background-color: #ffffff;
 
   transition: all 0.25s;
 }

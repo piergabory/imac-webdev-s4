@@ -34,8 +34,9 @@ h3 {
     margin: 0;
 }
 
-@import './cardStack.css';
+@import 'cardStack.css';
 @import 'card.css';
+@import 'search.css';
 
 
 .searchwrapper {

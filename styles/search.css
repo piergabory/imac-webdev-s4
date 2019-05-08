@@ -1,0 +1,18 @@
+.searchField {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 2rem;
+  
+  border-radius: 1rem;
+  border: solid 1px #bbbbbb;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1) inset;
+  background: #fcfafe
+}
+
+.searchBox {
+  width: 100%;
+  max-width: 60rem;
+  padding: 0, 3rem;
+}
