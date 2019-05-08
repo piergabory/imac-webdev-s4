@@ -1,0 +1,30 @@
+
+.roundwrapper {
+  display: flex;
+  flex-wrap: wrap !important;
+}
+
+.main, .detail {
+  margin: 1rem;
+  width: 40rem;
+  flex-grow: 1;
+}
+
+.opposingTeams {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.versus {
+  flex: 1;
+  width: 100%;
+  text-align: center;
+}
+
+.opposingTeams .cardStack:first-child {
+  transform: rotate(10deg)
+}
+
+.opposingTeams .cardStack:last-child {
+  transform: rotate(-10deg)
+}

@@ -36,7 +36,9 @@ h3 {
 
 @import 'cardStack.css';
 @import 'card.css';
+
 @import 'search.css';
+@import 'round.css';
 
 
 .searchwrapper {
@@ -96,10 +98,6 @@ button:disabled:hover {
     background-color: lightgrey;
     border: 2px solid lightgrey;
     color: white;
-}
-
-.versusleft, .versusright {
-width: 50%;
 }
 
 .destructive {

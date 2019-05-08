@@ -6,6 +6,8 @@ export default {
   nextStep: () => state => {
     const step = (state.step + 1) % 3
 
+    const isDeckFull = state.deck.cards.length >= state.deck.maxSize
+
     const defaultState = {
       ...state,
       step,
@@ -13,6 +15,8 @@ export default {
       search: {
         matches: []
       },
+
+      deck: {...state.deck, isDeckFull},
 
       // reset on step change
       round: {

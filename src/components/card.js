@@ -9,7 +9,6 @@ export default ({hero, decking = false, deckingLabel = false, discard = false, d
         <img src={hero.image.url} alt={hero.name} className='image'/>
         <p className='bio'>{'This ' + hero.work.occupation + ' will kick your ass'}</p>
         <div class='statchart'>
-          <p>here comes the cart</p>
           <Powerstats hero={hero}/>
         </div>
       </div>

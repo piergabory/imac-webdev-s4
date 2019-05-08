@@ -12,21 +12,23 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
   return (
     <div className='roundwrapper'>
 
-      <section className='versusleft'>
+      <section className='main'>
         { areTeamFormed && (
           <div className='opposingTeams'>
             <CardStack cards={state.leftTeam.map(hero => <Card hero={hero}/>)}/>
-            <h2>VS.</h2>
+            <h2 className='versus'>VS.</h2>
             <CardStack cards={state.rightTeam.map(hero => <Card hero={hero}/>)}/>
-            { state.environment && <Environment environment={state.environment} /> }
           </div>
         )}
+        <div className='environment'>
+          { state.environment && <Environment environment={state.environment} /> }
+        </div>
         <button onclick={() => gatherTeamFromDeckAction()} disabled={cannotGatherTeam} >Next Round</button>
         <button onclick={() => fightRoundAction()} disabled={cannotFight} >Fight!</button>
       </section>
 
       { areTeamFormed && (
-        <section className='versusright'>
+        <section className='detail'>
           <TeamPowerstats teams={[state.leftTeam, state.rightTeam]}/>
         </section>
       )}

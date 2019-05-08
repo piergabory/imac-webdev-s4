@@ -1,8 +1,8 @@
 .cardStack {
-  width: 100%;
+  width: auto;
   display: flex;
   justify-content: flex-start;
-  padding-right: 10rem;
+  padding-right: 14rem;
 }
 
 .stackedCardWrapper {
@@ -15,6 +15,8 @@
   transition: margin-right 300ms;
   position: relative;
   z-index: 100;
+
+  animation: cardAppearInStack 300ms 1 ease-out;
 }
 
 .stackedCardWrapper .card {
@@ -23,7 +25,7 @@
     -6px 1px 10px -6px rgba(0,0,0,0.5);
 }
 
-.stackedCardWrapper:hover {
+.stackedCardWrapper:not(:last-child):hover {
   margin-right:2rem
 }
 
@@ -64,4 +66,19 @@
 .deckcards .card:hover, .deckcard:focus {
   z-index: 1;
   transform: scale(1.1);
+}
+
+
+@keyframes cardAppearInStack {
+  from {
+    position: relative;
+    opacity: 0;
+    bottom: -6rem;
+  }
+
+  to {
+    position: relative;
+    opacity: 1;
+    bottom: 0;
+  }
 }
