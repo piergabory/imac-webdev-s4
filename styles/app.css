@@ -87,6 +87,11 @@ button {
     transition-duration: 0.4s;
 }
 
+button:hover {
+    background-color: white;
+    color: orange;
+}
+
 button:disabled {
     background-color: lightgrey;
     border: 2px solid lightgrey;

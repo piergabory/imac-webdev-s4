@@ -26,7 +26,6 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
 
       { areTeamFormed && (
         <section className='versusright'>
-          <p>here comes the radars</p>
           <TeamPowerstats teams={[state.leftTeam, state.rightTeam]}/>
         </section>
       )}

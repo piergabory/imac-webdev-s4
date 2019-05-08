@@ -3,24 +3,28 @@ import Chart from './chart'
 
 export default ({history}) => {
   const backgroundColors = [
-    'rgba(255,0,0,1)',
-    'rgba(0,0,255,1)',
-    'rgba(0,255,0,1)',
-    'rgba(0,255,255,1)',
-    'rgba(255,255,0,1)',
-    'rgba(255,0,255,1)',
-    'rgba(255,125,0,1)',
-    'rgba(0,255,125,1)',
-    'rgba(125,0,255,1)'
+    '#F0757D',
+    '#8D96F0',
+    '#FFDD4F',
+    '#49EB73',
+    '#38FF90',
+    '#3AE1F0',
+    '#C63DEB',
+    '#FF8C75',
+    '#E0FFA0'
   ]
 
   const getHeroLineGraph = hero => history.map(survivors => survivors.map(s => s.id).includes(hero.id) ? 1 : 0)
 
   const data = {
-    datasets: history[0].map((hero, index) => ({data: getHeroLineGraph(hero), label: hero.name, lineTension: 0, fill: 'origin', backgroundColor: backgroundColors[index]}))
+    datasets: history[0].map((hero, index) => ({data: getHeroLineGraph(hero), label: hero.name, cubicInterpolationMode: 'monotone', lineTension: 0.5, fill: 'origin', backgroundColor: backgroundColors[index]}))
   }
 
   const options = {
+    animation: {
+      duration: 1000,
+      easing: 'easeInOutElastic'
+    },
     scales: {
       yAxes: [{ stacked: true }],
       xAxes: [{
