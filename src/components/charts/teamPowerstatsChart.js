@@ -34,5 +34,12 @@ export default ({teams}) => {
     }))
   }
 
-  return <Chart type='radar' data={radarData}/>
+  const radarOptions = {
+    animation: {
+      duration: 1000,
+      easing: 'easeOutSine'
+    }
+  }
+
+  return <Chart type='radar' data={radarData} options={radarOptions}/>
 }
