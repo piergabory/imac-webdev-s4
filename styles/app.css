@@ -97,19 +97,31 @@ button:disabled:hover {
     color: white;
 }
 
-.cardbutton {
-    margin-left :auto;
-    margin-right: auto;
-    align-self: center;
-}
-button:hover {
-    border: 2px solid orange;
-    background-color: white;
-    color: orange;
-}
-
 .versusleft, .versusright {
 width: 50%;
+}
+
+.destructive {
+    background-color: #ff3b30;
+    color: white;
+}
+
+.additive {
+    background-color: #4cd964;
+    color: white;
+}
+
+.glyph {
+    width: 100%;
+    height: 100%;
+}
+
+.glyph:hover {
+    width: 80%;
+    height: 80%;
+    display: inline-block;
+    vertical-align: -webkit-baseline-middle;
+    transition-duration: 0.3s;
 }
 
 @media only screen and (max-width: 768px) {
@@ -117,6 +129,7 @@ width: 50%;
     body {
         font-size: 1rem;
     }
+
     h1 { 
         font-size: 1.2rem; 
     }
@@ -148,6 +161,7 @@ width: 50%;
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
     }
+
     .roundwrapper {
         flex-direction: column;
     }
@@ -155,19 +169,4 @@ width: 50%;
     .versusleft, .versusright {
         width: 100%;
     }
-  }
-
-  .destructive {
-      background-color: red;
-      color: white;
-  }
-
-  .additive {
-      background-color: green;
-      color: white;
-  }
-
-  .glyph {
-      width: 100%;
-      height: 100%;
-  }
+}
