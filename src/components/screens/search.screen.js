@@ -1,10 +1,10 @@
 import { h } from 'hyperapp'
 import Card from '../card'
 
-export default ({state, actions, ignore, onSelection}) => {
+export default ({state, actions, ignore, onSelection, isDeckFull}) => {
   const ingnoredIds = ignore.map(hero => hero.id)
   const visibleMatches = state.matches.filter((match) => !ingnoredIds.includes(match.id)).filter((_, index) => index < 6)
-  const matchedCard = (match, onclick) => <Card hero={match} decking={onSelection} onclick={onclick} deckingLabel='ADD'/>
+  const matchedCard = (match, onclick) => <Card hero={match} decking={onSelection} onclick={onclick} deckingLabel='ADD' deckable={!isDeckFull}/>
 
   return <div className='searchwrapper'>
     <nav className='searchBox'>
@@ -13,7 +13,7 @@ export default ({state, actions, ignore, onSelection}) => {
     {
       (state.preview)
         ? <section className='preview'>
-          { <Card hero={state.preview} decking={onSelection} deckingLabel='ADD' discard={actions.closePreview} discardLabel='RETURN' />}
+          { <Card hero={state.preview} decking={param => { onSelection(param); actions.closePreview(param) }} deckingLabel='ADD' discard={actions.closePreview} discardLabel='RETURN' deckable={!isDeckFull}/>}
         </section>
         : <section className='results'>
           {

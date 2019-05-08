@@ -15,20 +15,20 @@ body {
 }
 
 h1 { 
-    font-size: 1.4rem; 
+    font-size: 1.4em; 
     font-family: 'Quicksand';
     font-weight: bold;
     text-align: center;
 }
 
 h2 { 
-    font-size: 1.2rem; 
+    font-size: 1.2em; 
     font-family: 'Quicksand';
     font-weight: medium;
 }
 
 h3 { 
-    font-size: 1.1rem; 
+    font-size: 1.1em; 
     font-family: 'Quicksand';
     font-weight: light;
     margin: 0;
