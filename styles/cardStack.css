@@ -1,0 +1,43 @@
+.cardStack {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-right: 10rem;
+}
+
+.stackedCardWrapper {
+  width: 18rem;
+  height: 30rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: -14rem;
+  transition: margin-right 300ms;
+  position: relative;
+  z-index: 100;
+}
+
+.stackedCardWrapper .card {
+  box-shadow: 
+    -5px 5px 20px 5px rgba(0,0,0,0.1), 
+    -6px 1px 10px -6px rgba(0,0,0,0.5);
+}
+
+.stackedCardWrapper:hover {
+  margin-right:2rem
+}
+
+
+/* Pseudo-random rotations */
+.stackedCardWrapper:nth-of-type(2n) {
+  transform: rotate(3deg)
+}
+.stackedCardWrapper:nth-of-type(3n) {
+  transform: rotate(-6deg)
+}
+.stackedCardWrapper:nth-of-type(5n) {
+  transform: rotate(6deg)
+}
+.stackedCardWrapper:nth-of-type(13n) {
+  transform: rotate(-10deg)
+}

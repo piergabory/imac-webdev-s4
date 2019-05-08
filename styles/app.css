@@ -34,6 +34,8 @@ h3 {
     margin: 0;
 }
 
+@import './cardStack.css';
+
 .searchwrapper {
     display: flex;
     flex-direction: column;
@@ -129,9 +131,9 @@ h3 {
     align-content: flex-start;
 }
 
-.deckcards .card {
+/* .deckcards .card {
     margin-right: -10rem;
-}
+} */
 
 .deckwrapper .cardwrapper .discard {
     display: none;
