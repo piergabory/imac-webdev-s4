@@ -7,11 +7,9 @@
   height: 20rem;
   min-width: 10rem;
   width: 15rem;
-  margin: 10px;
-  padding: 10px;
 
-  background-color: beige;
-  border-radius: 15px;
+  border: 1rem solid beige;
+  border-radius: 1rem;
   box-shadow:  -5px 5px 5px rgb(180, 180, 180);
 
   transition: all 0.25s;
@@ -19,26 +17,22 @@
 
 .cardwrapper {
   position: relative;
-  margin: 1rem 0;
-  padding: 1rem;
+  margin: 1rem;
 }
 
 .cardButtons {
   position: absolute;
   height: 0;
-  right: 0;
-  top: 0;
+  right: -0.5rem;
+  top: -0.5rem;
 }
 
 .cardButton {
   padding: 0; margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 1.5rem; min-width: 0;
-  height: 1.5rem; min-height: 0;
-  font-size: 2rem !important;
-  border-radius: 10000rem;
+  width: 2rem; min-width: 0;
+  height: 2rem; min-height: 0;
+  background: none;
+  border: none;
 }
 
 .searchcards {
