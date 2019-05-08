@@ -1,5 +1,6 @@
 import { h } from 'hyperapp'
 import Card from '../card'
+import CardStack from '../cardStack'
 import Environment from '../environment'
 import TeamPowerstats from '../charts/teamPowerstatsChart'
 
@@ -14,9 +15,9 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
       <section className='versusleft'>
         { areTeamFormed && (
           <div className='opposingTeams'>
-            <article className='deckcards'>{ state.leftTeam.map(hero => <Card hero={hero}/>) }</article>
+            <CardStack cards={state.leftTeam.map(hero => <Card hero={hero}/>)}/>
             <h2>VS.</h2>
-            <article className='deckcards'>{ state.rightTeam.map(hero => <Card hero={hero}/>) }</article>
+            <CardStack cards={state.rightTeam.map(hero => <Card hero={hero}/>)}/>
             { state.environment && <Environment environment={state.environment} /> }
           </div>
         )}

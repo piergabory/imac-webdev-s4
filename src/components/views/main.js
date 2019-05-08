@@ -21,6 +21,7 @@ export default (state, actions) =>
       ignore={state.deck.cards}
       onSelection={actions.deck.add}
       actions={actions.search}
+      isDeckFull={state.deck.isDeckFull}
     /> }
 
     { state.step === 1 && <RoundScreen

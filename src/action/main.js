@@ -56,13 +56,19 @@ export default {
   },
 
   deck: {
-    remove: hero => state => ({...state, cards: state.cards.filter(card => card.id !== hero.id)}),
+    remove: hero => state => {
+      const cards = state.cards.filter(card => card.id !== hero.id)
+      const isDeckFull = state.cards.length >= state.maxSize
+      return {...state, cards, isDeckFull}
+    },
 
     // adds with no doubles
     add: hero => (state, actions) => {
-      if (state.cards.length >= state.maxSize) return state
+      if (state.isDeckFull) return state
       const newState = actions.remove(hero)
-      return {...newState, cards: newState.cards.concat([hero])}
+      const cards = newState.cards.concat([hero])
+      const isDeckFull = cards.length >= state.maxSize
+      return {...newState, cards, isDeckFull}
     }
   },
 

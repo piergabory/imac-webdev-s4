@@ -3,7 +3,8 @@ export default {
   isStepComplete: false,
 
   search: {
-    matches: []
+    matches: [],
+    isDeckFull: false
   },
 
   deck: {
