@@ -4,7 +4,7 @@
   left:0;
   right: 0;
   width:100%;
-  min-height: 13rem;
+  height: 20rem;
   background: linear-gradient(to bottom, rgba(255,165,0,0) 50%, rgba(255,165,0,0.5));
   transition: 200ms;
   margin: 0;
@@ -13,8 +13,28 @@
 
 .deckwrapper:hover {
   bottom: 0rem;
+
+}
+
+.deckwrapper h2 {
+  position: fixed;
+  z-index: 1000000;
+  bottom: 0;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  background: white;
+  border: solid orange 1px;
+  border-radius: 1rem;
 }
 
 body {
   padding-bottom: 30rem !important;
+}
+
+.deckwrapper .cardStack {
+  position: absolute;
+  left:0;
+  top: 0;
+  width: 100%;
+  height: 100%
 }

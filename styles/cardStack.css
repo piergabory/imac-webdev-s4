@@ -2,16 +2,18 @@
   width: auto;
   display: flex;
   justify-content: flex-start;
-  padding-right: 14rem;
+  padding-right: 12rem;
+  overflow-x: auto;
+  overflow-y: visible;
 }
 
 .stackedCardWrapper {
-  width: 18rem;
+  width: 15rem;
   height: 20rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: -14rem;
+  margin-right: -12rem;
   position: relative;
   z-index: 100;
   transition: margin-right 300ms, transform 300ms;
