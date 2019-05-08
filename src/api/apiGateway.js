@@ -1,7 +1,10 @@
+import fakeResponse from './fakeDatabase'
+
 const apiAccessToken = 1115531291985896
-const apiRoot = 'http://superheroapi.com/api/'
+const apiRoot = 'https://superheroapi.com/api.php'
 
 const getHero = id => {
+  console.log('hello')
   return new Promise((resolve, reject) => {
     fetch(`${apiRoot}/${apiAccessToken}/${id}`,
       {
@@ -13,14 +16,7 @@ const getHero = id => {
           'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
         }
       })
-      .then(response => {
-        try {
-          return resolve(response.json())
-        } catch (error) {
-          console.error('json parse error:', error)
-          return {}
-        }
-      })
+      .then(response => handleHTTPSuccess(response, resolve))
       .catch(reject)
   })
 }
@@ -28,15 +24,21 @@ const getHero = id => {
 const searchHero = keyword => {
   return new Promise((resolve, reject) => {
     fetch(`${apiRoot}/${apiAccessToken}/search/${keyword}`)
-      .then(response => {
-        try {
-          resolve(response.json())
-        } catch (error) {
-          console.error(error, response)
-          resolve(response)
-        }
-      })
+      .then(response => handleHTTPSuccess(response, resolve))
       .catch(reject)
+  })
+}
+
+const handleHTTPSuccess = (data, resolve) => {
+  data.json().then(jsonData => {
+    console.log(data, jsonData, jsonData.response === 'success')
+    console.info('api request status: ', jsonData.response)
+    if (jsonData.response === 'success') {
+      return resolve(jsonData)
+    } else {
+      console.error('server error response:', jsonData.error)
+      return resolve(fakeResponse)
+    }
   })
 }
 
