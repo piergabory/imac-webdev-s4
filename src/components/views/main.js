@@ -31,5 +31,5 @@ export default (state, actions) =>
     /> }
     { state.step === 2 && <FinalResultScreen history={state.history} /> }
     { state.step !== 1 && <Deck state={state.deck} actions={actions.deck} onupdate={actions.checkStepCompletion} isEditable={state.step === 0}/>}
-    <button disabled={!state.isStepComplete} onclick={() => actions.nextStep()}>NEXT</button>
+    <button className='navbutton' disabled={!state.isStepComplete} onclick={() => actions.nextStep()}>NEXT</button>
   </main>
