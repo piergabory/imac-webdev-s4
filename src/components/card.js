@@ -13,13 +13,11 @@ export default ({hero, decking = false, deckingLabel = false, discard = false, d
         </div>
       </div>
     </div>
-    <nav className='cardButtons'>
-      { discardLabel && discard && <button onclick={() => discard(hero)} className='cardButton discard destructive' title={discardLabel}>
-        <img className='glyph' src='../../styles/img/Button Destructive.png'></img>
-      </button> }
-      { deckingLabel && decking && <button onclick={() => decking(hero)} className='cardButton decking additive' title={deckingLabel} disabled={!deckable}>
-        <img className='glyph' src='../../styles/img/Button Additive.png'></img>
-      </button> }
-    </nav>
+    { discardLabel && discard && <button onclick={() => discard(hero)} className='cardButton discard destructive' title={discardLabel}>
+      <img className='glyph' src='../../styles/img/Button Destructive.png'></img>
+    </button> }
+    { deckingLabel && decking && <button onclick={() => decking(hero)} className='cardButton decking additive' title={deckingLabel} disabled={!deckable}>
+      <img className='glyph' src='../../styles/img/Button Additive.png'></img>
+    </button> }
   </article>
 }

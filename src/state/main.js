@@ -4,7 +4,8 @@ export default {
 
   search: {
     matches: [],
-    isDeckFull: false
+    isDeckFull: false,
+    maxResults: 6
   },
 
   deck: {

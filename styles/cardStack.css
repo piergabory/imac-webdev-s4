@@ -2,7 +2,10 @@
   width: auto;
   display: flex;
   justify-content: flex-start;
-  padding-right: 12rem;
+  padding: 4rem;
+  margin: 0 -4rem;
+  width: calc(100% + 8rem);
+  padding-right: 16rem;
   overflow-x: auto;
   overflow-y: visible;
 }
@@ -46,25 +49,6 @@
 }
 .stackedCardWrapper:nth-of-type(13n) {
   transform: rotate(-10deg)
-}
-
-/* Legacy styles */
-
-.deckcards {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-content: flex-start;
-}
-
-.deckwrapper .cardwrapper .discard {
-  display: none;
-}
-.deckwrapper .cardwrapper:hover .discard {
-  display: inline;
-  position: relative;
-  top: -100%;
 }
 
 

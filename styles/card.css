@@ -3,15 +3,13 @@
   flex-direction: row;
   justify-content: flex-end;
 
-  min-height: 15em;
   height: 20em;
-  min-width: 10em;
   width: 15em;
 
+  background-color: #ffffff;
   border: 1em solid beige;
   border-radius: 1em;
   box-shadow:  -5px 5px 5px rgb(180, 180, 180);
-  background-color: #ffffff;
 
   transition: all 0.25s;
 }
@@ -21,24 +19,24 @@
   margin: 1em;
 }
 
-.cardButtons {
-  position: absolute;
-  height: 0;
-  right: -0.5em;
-  top: -0;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
 .cardButton {
+  position: absolute;
+  right: -1rem;
   padding: 0; margin: 0;
-  width: 2em; min-width: 0;
-  height: 2em; min-height: 0;
+  width: 4em; min-width: 0;
+  height: 4em; min-height: 0;
   background: none;
   border: none;
   margin-left: 1em;
   border-radius: 50px;
+}
+
+.cardButton.additive {
+  bottom: -1rem;
+}
+
+.cardButton.destructive {
+  top: -1rem;
 }
 
 .cardButton:disabled {
@@ -48,6 +46,10 @@
 
 .cardButton:disabled:hover .glyph {
   transform: none;
+}
+
+.cardwrapper:not(:hover) .cardButton{
+  display: none;
 }
 
 .destructive {

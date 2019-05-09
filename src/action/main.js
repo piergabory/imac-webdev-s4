@@ -54,7 +54,10 @@ export default {
       const query = setTimeout(() => api.searchHero(searchedExpression).then(response => actions.updateMatches(response.results)), 300)
       return {...state, query}
     },
-    updateMatches: matches => state => ({...state, matches}),
+    updateMatches: matches => state => {
+      const notFound = matches.length === 0
+      return {...state, matches, notFound}
+    },
     preview: card => state => ({...state, preview: card}),
     closePreview: () => state => ({...state, preview: null})
   },

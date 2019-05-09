@@ -37,7 +37,11 @@ const handleHTTPSuccess = (data, resolve) => {
       return resolve(jsonData)
     } else {
       console.error('server error response:', jsonData.error)
-      return resolve(fakeResponse)
+      if (jsonData.error === 'access denied') {
+        return resolve(fakeResponse)
+      } else {
+        return resolve({results: []})
+      }
     }
   })
 }
