@@ -13,7 +13,8 @@ export default {
       step,
 
       search: {
-        matches: []
+        matches: [],
+        notFound: false
       },
 
       deck: {...state.deck, isDeckFull},

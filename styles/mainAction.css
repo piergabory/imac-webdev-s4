@@ -1,0 +1,17 @@
+:not(main) > .mainAction:disabled {
+  display: none;
+}
+
+.mainAction {
+  position: fixed;
+  bottom: 0rem;
+  right: 0rem;
+  margin: 1.5rem 1rem !important ;
+  z-index: 1000000;
+  box-shadow: 1px 3px 10px rgba(0,0,0,0.3);
+}
+
+
+:not(main) > .mainAction{
+  z-index: 10000000;
+}

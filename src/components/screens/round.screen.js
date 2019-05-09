@@ -23,8 +23,8 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
         <div className='environment'>
           { state.environment && <Environment environment={state.environment} /> }
         </div>
-        <button className='navbutton' onclick={() => gatherTeamFromDeckAction()} disabled={cannotGatherTeam} >Next Round</button>
-        <button className='navbutton' onclick={() => fightRoundAction()} disabled={cannotFight} >Fight!</button>
+        <button className='navbutton mainAction' onclick={() => gatherTeamFromDeckAction()} disabled={cannotGatherTeam} >Next Round</button>
+        <button className='navbutton mainAction' onclick={() => fightRoundAction()} disabled={cannotFight} >Fight!</button>
       </section>
 
       { areTeamFormed && (
