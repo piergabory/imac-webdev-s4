@@ -54,14 +54,6 @@ h3 {
     width: 100%;
 }
 
-.roundwrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-content: center;
-}
-
 .basics {
     display: flex;
     flex-direction: column;
@@ -111,6 +103,9 @@ h3 {
     color: white;
 }
 
+.environment {
+    text-align: center
+}
 
 
 @media only screen and (max-width: 768px) {
@@ -129,33 +124,6 @@ h3 {
     h3 { 
         font-size: 1rem; 
 
-    }
-
-    .card { 
-        height: 16rem;
-        width: 12rem;
-        padding: 0.5rem;
-    }
-
-    .name {
-        margin-bottom: 0.5rem;
-    }
-
-    .card img {
-        height: 50px;;
-    }
-
-    .bio {
-        margin-top: 0.5rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .roundwrapper {
-        flex-direction: column;
-    }
-    
-    .versusleft, .versusright {
-        width: 100%;
     }
 }
 

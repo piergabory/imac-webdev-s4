@@ -1,13 +1,23 @@
 
-.roundwrapper {
+.splitView {
   display: flex;
   flex-wrap: wrap !important;
+  align-content: center;
+  justify-content: center;
 }
 
-.main, .detail {
+.master, .detail {
   margin: 1rem;
-  width: 40rem;
+  width: 100%;
+  max-width: 40rem;
   flex-grow: 1;
+}
+
+.detail {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }
 
 .opposingTeams {
@@ -17,8 +27,23 @@
 }
 .versus {
   flex: 1;
-  width: 100%;
+  display: inline-block;
+  width: auto;
+  padding: 1rem;
+  position: relative;
+  z-index: 10000000000000;
   text-align: center;
+  background: orange;
+  border: solid white 2px;
+  box-shadow: 0 2px 1rem rgba(0,0,0,0.2);
+  color: white;
+  text-transform: uppercase;
+  border-radius: 2rem;
+}
+
+.roundWrapper .info {
+  text-align: center;
+  width: 100%;
 }
 
 .opposingTeams .cardStack:first-child {
@@ -27,4 +52,14 @@
 
 .opposingTeams .cardStack:last-child {
   transform: rotate(-10deg)
+}
+
+@media only screen and (max-width: 768px) {
+  .opposingTeams .cardStack:first-child {
+    transform: rotate(10deg) scale(0.6)
+  }
+  
+  .opposingTeams .cardStack:last-child {
+    transform: rotate(-10deg) scale(0.6)
+  }
 }

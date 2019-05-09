@@ -10,29 +10,37 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
   const cannotFight = state.isLastRound || !areTeamFormed
 
   return (
-    <div className='roundwrapper'>
-
-      <section className='main'>
-        { areTeamFormed && (
-          <div className='opposingTeams'>
-            <CardStack cards={state.leftTeam.map(hero => <Card hero={hero}/>)}/>
-            <h2 className='versus'>VS.</h2>
-            <CardStack cards={state.rightTeam.map(hero => <Card hero={hero}/>)}/>
-          </div>
-        )}
-        <div className='environment'>
-          { state.environment && <Environment environment={state.environment} /> }
+    <div className='roundWrapper'>
+      <section>
+        <div>
+          { (areTeamFormed && !state.survivors) && (
+            <div className='splitView'>
+              <div className='master'>
+                <div className='opposingTeams'>
+                  <CardStack cards={state.leftTeam.map(hero => <Card hero={hero}/>)}/>
+                  <h2 className='versus'>VS.</h2>
+                  <CardStack cards={state.rightTeam.map(hero => <Card hero={hero}/>)}/>
+                </div>
+                <h2 className='info'>Shall fight in the {state.environment.name}</h2>
+              </div>
+              <aside className='detail'>
+                <TeamPowerstats teams={[state.leftTeam, state.rightTeam]}/>
+                { state.environment && <Environment environment={state.environment} /> }
+              </aside>
+            </div>
+          )}
         </div>
-        <button className='navbutton mainAction' onclick={() => gatherTeamFromDeckAction()} disabled={cannotGatherTeam} >Next Round</button>
-        <button className='navbutton mainAction' onclick={() => fightRoundAction()} disabled={cannotFight} >Fight!</button>
+        <div>
+          { state.survivors && (
+            <div className='splitView'>
+              <h2 className='info'>The winning team is...</h2>
+              <CardStack cards={state.survivors.map(hero => <Card hero={hero}/>)}/>
+            </div>
+          )}
+        </div>
       </section>
-
-      { areTeamFormed && (
-        <section className='detail'>
-          <TeamPowerstats teams={[state.leftTeam, state.rightTeam]}/>
-        </section>
-      )}
-
+      <button className='navbutton mainAction' onclick={() => gatherTeamFromDeckAction()} disabled={cannotGatherTeam} >Next Round</button>
+      <button className='navbutton mainAction' onclick={() => fightRoundAction()} disabled={cannotFight} >Fight!</button>
     </div>
   )
 }

@@ -24,7 +24,8 @@ export default {
         ...state.round,
         isLastRound: false,
         leftTeam: [],
-        rightTeam: []
+        rightTeam: [],
+        survivors: undefined
       }
     }
 
@@ -95,7 +96,7 @@ export default {
 
     return {
       ...state,
-      round: { ...state.round, leftTeam, rightTeam, environment },
+      round: { ...state.round, leftTeam, rightTeam, environment, survivors: undefined },
       deck: {...state.deck, cards: veryReducedDeck}
     }
   },
@@ -106,7 +107,7 @@ export default {
     const isLastRound = deck.length <= state.round.teamSize
     return {
       ...state,
-      round: { ...state.round, leftTeam: [], rightTeam: [], isLastRound },
+      round: { ...state.round, leftTeam: [], rightTeam: [], isLastRound, survivors },
       deck: { ...state.deck, cards: deck },
       history: state.history.concat([deck])
     }

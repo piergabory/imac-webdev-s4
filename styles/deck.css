@@ -26,8 +26,8 @@
 .deckwrapper .cardStack {
   position: absolute;
   bottom: -18rem;
-  left: 2rem;
-  right: 2rem;
+  left: calc(50% + 4rem);
+  transform: translateX(-50%);
   transition: bottom 300ms ease-in-out
 }
 
