@@ -55,7 +55,6 @@
     "yargs": "^10.0.3"
   },
   "dependencies": {
-    "@hyperapp/logger": "^0.4.1",
     "chart.js": "^2.8.0",
     "hyperapp": "^1.1.2",
     "ramda": "^0.25.0"
