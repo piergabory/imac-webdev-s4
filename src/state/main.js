@@ -22,5 +22,7 @@ export default {
     isLastRound: false
   },
 
-  history: []
+  history: [],
+
+  actionLabel: 'Start'
 }

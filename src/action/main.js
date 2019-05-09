@@ -13,11 +13,15 @@ export default {
       step,
 
       search: {
+        ...state.search,
         matches: [],
         notFound: false
       },
 
-      deck: {...state.deck, isDeckFull},
+      deck: {
+        ...state.deck,
+        isDeckFull
+      },
 
       // reset on step change
       round: {
@@ -30,9 +34,9 @@ export default {
     }
 
     switch (step) {
-      case 0: return { ...defaultState, history: [] }
-      case 1: return { ...defaultState, history: [state.deck.cards] }
-      case 2: return { ...defaultState, history: state.history.concat([state.deck.cards]) }
+      case 0: return { ...defaultState, history: [], actionLabel: 'Start' }
+      case 1: return { ...defaultState, history: [state.deck.cards], actionLabel: 'Results' }
+      case 2: return { ...defaultState, history: state.history.concat([state.deck.cards]), actionLabel: 'New Game' }
     }
   },
 
