@@ -29,7 +29,8 @@ export default {
         isLastRound: false,
         leftTeam: [],
         rightTeam: [],
-        survivors: undefined
+        survivors: undefined,
+        defeated: undefined
       }
     }
 
@@ -100,18 +101,21 @@ export default {
 
     return {
       ...state,
-      round: { ...state.round, leftTeam, rightTeam, environment, survivors: undefined },
+      round: { ...state.round, leftTeam, rightTeam, environment, survivors: undefined, defeated: undefined },
       deck: {...state.deck, cards: veryReducedDeck}
     }
   },
 
   fightTeams: () => state => {
     const survivors = fight(state.round.leftTeam, state.round.rightTeam, state.round.environment)
+    const defeated = state.round.leftTeam.concat(state.round.rightTeam).filter(hero => !survivors.includes(hero))
     const deck = state.deck.cards.concat(survivors)
     const isLastRound = deck.length <= state.round.teamSize
+
+    console.log(survivors, defeated)
     return {
       ...state,
-      round: { ...state.round, leftTeam: [], rightTeam: [], isLastRound, survivors },
+      round: { ...state.round, leftTeam: [], rightTeam: [], isLastRound, survivors, defeated },
       deck: { ...state.deck, cards: deck },
       history: state.history.concat([deck])
     }

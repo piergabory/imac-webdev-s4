@@ -3,6 +3,7 @@ import Card from '../card'
 import CardStack from '../cardStack'
 import Environment from '../environment'
 import TeamPowerstats from '../charts/teamPowerstatsChart'
+import Kill from '../kill'
 
 export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
   const areTeamFormed = (state.leftTeam.length > 0 && state.rightTeam.length > 0)
@@ -32,9 +33,10 @@ export default ({state, gatherTeamFromDeckAction, fightRoundAction}) => {
         </div>
         <div>
           { state.survivors && (
-            <div className='splitView'>
+            <div>
               <h2 className='info'>The winning team is...</h2>
               <CardStack cards={state.survivors.map(hero => <Card hero={hero}/>)}/>
+              {state.survivors.map((hero, index) => <Kill killed={state.defeated[index]} killer={hero}/>)}
             </div>
           )}
         </div>

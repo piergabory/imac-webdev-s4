@@ -63,3 +63,8 @@
     transform: rotate(-10deg) scale(0.6)
   }
 }
+
+.killMessage {
+  display: block;
+  text-align: center;
+}
