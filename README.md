@@ -12,10 +12,10 @@ Install dependencies
 $ npm i
 ```
 
-Start de dev server
+Start the dev server
 ```
 $ npm run start
 ```
 
-You can then open your brower on localhost, port 8000
+You can then open your browser on localhost, port 8000
 [http://localhost:8000](http://localhost:8000)
