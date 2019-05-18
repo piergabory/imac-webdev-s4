@@ -48,8 +48,10 @@
   transform: none;
 }
 
-.cardwrapper:not(:hover) .cardButton{
-  display: none;
+@media screen and (hover: hover) {
+  .cardwrapper:not(:hover) .cardButton{
+    display: none;
+  }
 }
 
 .destructive {
@@ -105,6 +107,14 @@
   object-fit: contain;
 }
 
+/* Sets the card size in preview, (everything beeing EM relative) */
 .preview .cardwrapper {
-  font-size: 2rem;
+  font-size: 5.5vw;
+}
+
+/* if the aspect ratio is wider than the cards, limit to the height instead of the width */
+@media screen and (min-aspect-ratio: 2/3){
+  .preview .cardwrapper {
+    font-size: 4vh;
+  }
 }

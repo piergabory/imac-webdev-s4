@@ -7,11 +7,14 @@ export default ({state, actions, ignore, onSelection, isDeckFull}) => {
   const matchedCard = (match, onclick) => <Card hero={match} decking={onSelection} onclick={onclick} deckingLabel='ADD' deckable={!isDeckFull}/>
 
   return <div className='searchwrapper'>
-    <nav className='searchBox'>
-      <input className='searchField' oninput={ ev => actions.search(ev.target.value) } type='text' placeholder='Luke Skywalker'/>
-    </nav>
+    { 
+      !state.preview && <nav className='searchBox'>
+        <input className='searchField' oninput={ ev => actions.search(ev.target.value) } type='text' placeholder='Luke Skywalker'/>
+      </nav>
+    }
+
     {
-      (state.preview) && <section className='preview'>
+      state.preview && <section className='preview'>
         { <Card hero={state.preview} decking={param => { onSelection(param); actions.closePreview(param) }} deckingLabel='ADD' discard={actions.closePreview} discardLabel='RETURN' deckable={!isDeckFull}/>}
       </section>
     }

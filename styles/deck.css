@@ -9,6 +9,7 @@
   align-content: center;
   border-top: solid 1px orange;
   background: #ffffff;
+  max-width: 100vw;
 }
 
 .deckwrapper h2 {
